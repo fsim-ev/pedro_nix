@@ -5,6 +5,10 @@
   cudaPkgs = with pkgs.cudaPackages; [
     cudatoolkit
   ];
+
+  helixLSPs = with pkgs; [
+    nil # nix lsp
+  ];
 in {
   security = {
     sudo.enable = true;
@@ -16,5 +20,6 @@ in {
     bat lolcat less
     git
     btop nvtopPackages.full
-  ] ++ cudaPkgs;
+    ffmpeg
+  ] ++ cudaPkgs ++ helixLSPs;
 }

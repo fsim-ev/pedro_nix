@@ -69,7 +69,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia = {
@@ -78,6 +77,6 @@
     powerManagement.finegrained = false;
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-    nvidiaPersistenced = true;
+    # nvidiaPersistenced = true;
   };
 }
