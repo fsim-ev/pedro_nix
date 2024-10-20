@@ -21,5 +21,6 @@ in {
     git
     btop nvtopPackages.full
     ffmpeg
+    yazi ranger
   ] ++ cudaPkgs ++ helixLSPs;
 }
