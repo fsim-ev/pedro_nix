@@ -31,42 +31,8 @@
 
   swapDevices = [ ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno12399np0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno12409np1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno8303.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno8403.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  networking = {
-    hostId = "e2c06a1b";
-    hostName = "pedro";
-
-    interfaces.eno8303 = {
-      ipv4.addresses = [
-        {
-          address = "194.95.108.46";
-          prefixLength = 24;
-        }
-      ];
-    };
-
-    defaultGateway = {
-      address = "194.95.108.250";
-      interface = "eno8303";
-    };
-
-    nameservers = [ 
-      "194.95.106.120"
-      "194.95.106.121"
-    ];
-  };
 
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -79,4 +45,8 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     # nvidiaPersistenced = true;
   };
+
+   # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 }
