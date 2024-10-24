@@ -15,8 +15,6 @@
       ./services
     ];
 
-  console.keyMap = "de";
-
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     trusted-users = [ "@wheel" ];
@@ -34,5 +32,14 @@
 
   networking.firewall.enable = false;
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  time.timeZone = "Europe/Berlin";
+
+  # Select internationalization properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "de";
+  };
 }
 

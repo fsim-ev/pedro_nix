@@ -5,16 +5,16 @@
     hostId = "e2c06a1b";
     hostName = "pedro";
 
+    hosts = {
+      "10.24.1.2" = [
+        "fren.fsim"
+        "monolith.fsim"
+      ];
+    };
+
     interfaces.eno8303 = {
       useDHCP = false;
       ipv4.addresses = [
-        # tmp ip
-        # {
-        #   address = "194.95.108.46";
-        #   prefixLength = 24;
-        # }
-
-        # "real" ip
         {
           address = "195.37.211.44";
           prefixLength = 27;
@@ -31,7 +31,14 @@
       "194.95.106.120"
       "194.95.106.121"
     ];
+
+    enableIPv6 = false;
   };
 
   networking.useDHCP = false;
+
+  boot.kernel.sysctl = {
+    # Allow containers to access internet
+    "net.ipv4.ip_forward" = 1;
+  };
 }
