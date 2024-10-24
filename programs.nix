@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:let 
   cudaPkgs = with pkgs.cudaPackages; [
@@ -22,5 +23,6 @@ in {
     btop nvtopPackages.full
     ffmpeg
     yazi ranger
+    inputs.agenix.packages.x86_64-linux.default
   ] ++ cudaPkgs ++ helixLSPs;
 }

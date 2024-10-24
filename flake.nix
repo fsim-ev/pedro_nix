@@ -7,18 +7,25 @@
     unstable-nix = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, unstable-nix }@inputs: {
+  outputs = { self, nixpkgs, ...}@inputs: {
     nixosConfigurations.pedro = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
+
+        inputs.agenix.nixosModules.default
       ];
 
       specialArgs = let
-        unstable = import (unstable-nix) { system = "x86_64-linux"; config.allowUnfree = true; };
-      in { inherit  unstable; };
+        unstable = import (inputs.unstable-nix) { system = "x86_64-linux"; config.allowUnfree = true; };
+      in { inherit  unstable inputs; };
     };
   };
 }
