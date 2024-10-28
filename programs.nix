@@ -16,6 +16,9 @@ in {
     doas.enable = true;
   };
 
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim helix neovim
     bat lolcat less
