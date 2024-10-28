@@ -15,5 +15,6 @@
     ./minecraft.nix
     ./fsim-room-tunnel.nix
     ./engelsystem.nix
+    ./znapzend.nix
   ];
 }
