@@ -13,6 +13,8 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+
   fileSystems."/" =
     { device = "storage/root";
       fsType = "zfs";
@@ -28,6 +30,46 @@
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
+
+  fileSystems."/var/lib/zulip" = {
+    device = "storage/services/zulip";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var/lib/postgresql" = {
+    device = "storage/services/postgresql";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var/lib/hedgedoc" = {
+    device = "storage/services/hedgedoc";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var/lib/passbolt" = {
+    device = "storage/services/passbolt";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var/lib/nextcloud" = {
+    device = "storage/services/nextcloud";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var/lib/engelsystem" = {
+    device = "storage/services/engelsystem";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var/lib/www/examia.de" = {
+    device = "storage/services/examia";
+    fsType = "zfs";
+  };
+
+  services.zfs = {
+    autoScrub.enable = true;
+    trim.enable = true;
+  };
 
   swapDevices = [ ];
 

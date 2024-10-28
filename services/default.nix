@@ -14,5 +14,6 @@
     ./passbolt.nix
     ./minecraft.nix
     ./fsim-room-tunnel.nix
+    ./engelsystem.nix
   ];
 }
