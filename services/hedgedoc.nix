@@ -2,8 +2,15 @@
   config,
   ...
 }:{
+  age.secrets = {
+    hedgedoc-env-file = {
+      file = ../secrets/hedgedoc-env-file.age;
+    };
+  };
+
   services.hedgedoc = {
       enable = true;
+      environmentFile = config.age.secrets.hedgedoc-env-file.path;
       settings = rec {
         domain = "pad.fsim-ev.de";
         port = 3003;
@@ -36,8 +43,6 @@
         ldap = {
           url = "ldaps://dc2.hs-regensburg.de";
           providerName = "NDS Kennung";
-          bindDn = builtins.readFile ../secrets/secrets/hedgedoc-bindDn;
-          bindCredentials = builtins.readFile ../secrets/secrets/hedgedoc-bindCredentials;
           searchBase = "ou=HSR,dc=hs-regensburg,dc=de";
           searchAttributes = [ "displayName" "mail" "cn" ];
           searchFilter = "(cn={{username}})";

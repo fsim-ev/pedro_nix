@@ -6,4 +6,10 @@ let
   authed = [ system beo45216 ];
 in {
   "nextcloud-admin-pass.age".publicKeys = authed;
+
+  "hedgedoc-env-file.age".publicKeys = authed;
+
+  "zulip-env-file.age".publicKeys = authed;
+  "zulip-db-env-file.age".publicKeys = authed;
+  "zulip-rabbitmq-env-file.age".publicKeys = authed;
 }

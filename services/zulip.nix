@@ -1,13 +1,29 @@
 {
   lib,
+  config,
   ...
 }:{
+  age.secrets = {
+    zulip-env-file = {
+      file = ../secrets/zulip-env-file.age;
+    };
+
+    zulip-db-env-file = {
+      file = ../secrets/zulip-db-env-file.age;
+    };
+
+    zulip-rabbitmq-env-file = {
+      file = ../secrets/zulip-rabbitmq-env-file.age;
+    };
+  };
+
   virtualisation.oci-containers.containers = rec {
     chat = {
       image = "zulip/docker-zulip:8.4-0";
       dependsOn = [ "chat-db" "chat-cache" "chat-mqueue" ];
       # hack
       cmd = [ "/bin/sh" "-c" "/home/zulip/deployments/current/scripts/zulip-puppet-apply -f && entrypoint.sh app:run" ];
+      # environmentFiles = [ config.age.secrets.zulip-env-file.path ];
       environment = {
         MANUAL_CONFIGURATION = "true";
         #LINK_SETTINGS_TO_DATA = "true";
@@ -32,10 +48,11 @@
     };
     chat-db = {
       image = "zulip/zulip-postgresql:14";
+      environmentFiles = [ config.age.secrets.zulip-db-env-file.path ];
       environment = {
         POSTGRES_DB = "zulip";
         POSTGRES_USER = "zulip";
-        POSTGRES_PASSWORD = chat.environment.SECRETS_postgres_password;
+        # POSTGRES_PASSWORD = chat.environment.SECRETS_postgres_password;
       };
       volumes = [
         "/var/lib/zulip/postgresql/data:/var/lib/postgresql/data:rw"
@@ -55,6 +72,7 @@
     chat-mqueue = {
       image = "rabbitmq:3.7.7";
       dependsOn = [ "chat-db" ];
+      # environmentFiles = [ config.age.secrets.zulip-rabbitmq-env-file.path ];
       environment = {
         RABBITMQ_DEFAULT_USER = "zulip";
         RABBITMQ_DEFAULT_PASS = chat.environment.SECRETS_rabbitmq_password;
