@@ -24,7 +24,7 @@
       dependsOn = [ "chat-db" "chat-cache" "chat-mqueue" ];
       # hack
       cmd = [ "/bin/sh" "-c" "/home/zulip/deployments/current/scripts/zulip-puppet-apply -f && entrypoint.sh app:run" ];
-      # environmentFiles = [ config.age.secrets.zulip-env-file.path ];
+      environmentFiles = [ config.age.secrets.zulip-env-file.path ];
       environment = {
         MANUAL_CONFIGURATION = "true";
         #LINK_SETTINGS_TO_DATA = "true";
@@ -33,10 +33,6 @@
         SETTING_EXTERNAL_HOST = "chat.fsim-ev.de";
         SETTING_ZULIP_ADMINISTRATOR = "fachschaft_im@oth-regensburg.de";
         SSL_CERTIFICATE_GENERATION = "self-signed";
-
-        SECRETS_postgres_password = lib.fileContents ../secrets/secrets/zulip-db-pass;
-        SECRETS_redis_password = lib.last (lib.splitString " " (lib.fileContents ../secrets/secrets/zulip-redis.conf));
-        SECRETS_rabbitmq_password = lib.fileContents ../secrets/secrets/zulip-mq-pass;
       };
       volumes = [
         "/var/lib/zulip:/data"
@@ -75,6 +71,7 @@
       # environmentFiles = [ config.age.secrets.zulip-rabbitmq-conf-file.path ];
       environment = {
         RABBITMQ_DEFAULT_USER = "zulip";
+        # no touchey, didn't get the env file to work
         RABBITMQ_DEFAULT_PASS = lib.fileContents ../secrets/secrets/zulip-mq-pass;
       };
       volumes = [
