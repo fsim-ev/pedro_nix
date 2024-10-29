@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:{
   age.secrets = {
@@ -12,7 +13,7 @@
       file = ../secrets/zulip-db-env-file.age;
     };
 
-    zulip-rabbitmq-env-file = {
+    zulip-rabbitmq-conf-file = {
       file = ../secrets/zulip-rabbitmq-env-file.age;
     };
   };
@@ -52,7 +53,6 @@
       environment = {
         POSTGRES_DB = "zulip";
         POSTGRES_USER = "zulip";
-        # POSTGRES_PASSWORD = chat.environment.SECRETS_postgres_password;
       };
       volumes = [
         "/var/lib/zulip/postgresql/data:/var/lib/postgresql/data:rw"
@@ -70,12 +70,12 @@
       extraOptions = [ "--network=container:chat-db" ];
     };
     chat-mqueue = {
-      image = "rabbitmq:3.7.7";
+      image = "rabbitmq:4.0.3";
       dependsOn = [ "chat-db" ];
-      # environmentFiles = [ config.age.secrets.zulip-rabbitmq-env-file.path ];
+      # environmentFiles = [ config.age.secrets.zulip-rabbitmq-conf-file.path ];
       environment = {
         RABBITMQ_DEFAULT_USER = "zulip";
-        RABBITMQ_DEFAULT_PASS = chat.environment.SECRETS_rabbitmq_password;
+        RABBITMQ_DEFAULT_PASS = lib.fileContents ../secrets/secrets/zulip-mq-pass;
       };
       volumes = [
         "/var/lib/zulip/rabbitmq:/var/lib/rabbitmq:rw"
