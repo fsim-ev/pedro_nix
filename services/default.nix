@@ -16,5 +16,6 @@
     ./fsim-room-tunnel.nix
     ./engelsystem.nix
     ./znapzend.nix
+    ./wiki-js.nix
   ];
 }
