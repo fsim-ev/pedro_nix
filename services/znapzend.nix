@@ -5,6 +5,7 @@
     enable = true;
     pure = true;
     autoCreation = true;
+    features.skipIntermediates = true;
     zetup = {
       "storage/services" = {
         plan = "1m=>1d";
