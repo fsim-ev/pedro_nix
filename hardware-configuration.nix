@@ -13,8 +13,6 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-
   fileSystems."/" =
     { device = "storage/root";
       fsType = "zfs";

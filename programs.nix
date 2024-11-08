@@ -26,6 +26,7 @@ in {
     btop nvtopPackages.full
     ffmpeg
     yazi ranger
+    nushell
     inputs.agenix.packages.x86_64-linux.default
   ] ++ cudaPkgs ++ helixLSPs;
 }

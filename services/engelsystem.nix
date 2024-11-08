@@ -7,7 +7,7 @@
     createDatabase = true;
     # configuration options with explanations can be found at
     # https://github.com/engelsystem/engelsystem/blob/main/config/config.default.php
-    config = {
+    settings = {
       database = {
   	    database = "engelsystem";
   	    host = "localhost";

@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  stable,
   ...
 }:{
   age.secrets = {
@@ -13,7 +14,7 @@
 
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud29.overrideAttrs {
+    package = stable.nextcloud30.overrideAttrs {
       patches = (../patches/nextcloud-remove-notify-nag.patch);
     };
 

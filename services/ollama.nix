@@ -1,29 +1,34 @@
 {
   config,
-  unstable,
   ...
 }:{
+  age.secrets = {
+    open-webui-env-file = {
+      file = ../secrets/openwebui-env-file.age;
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
   
   services.ollama = {
     enable = true;
-    package = unstable.ollama;
+    # package = unstable.ollama;
     acceleration = "cuda";
   };
 
   services.open-webui = {
-    host = "0.0.0.0";
-    enable = false;
+    enable = true;
+    # package = unstable.open-webui;
+    environmentFile = config.age.secrets.open-webui-env-file.path;
+    host = "localhost";
     port = 16753;
   };
 
-  # pedro nur vom internen netz erreichbar => kein ACME certificate
-  # services.nginx.virtualHosts = {
-  #   "ai.pedro.fsim-ev.de" = {
-  #     locations."/".proxyPass = "http://localhost:${builtins.toString config.services.open-webui.port}";
-  #     forceSSL = true;
-  #     enableACME = true;
-  #   };
-  # };
+  services.nginx.virtualHosts = {
+    "ai.fsim-ev.de" = {
+      locations."/".proxyPass = "http://localhost:${builtins.toString config.services.open-webui.port}";
+      forceSSL = true;
+      enableACME = true;
+    };
+  };
 }

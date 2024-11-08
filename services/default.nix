@@ -17,5 +17,6 @@
     ./engelsystem.nix
     ./znapzend.nix
     ./wiki-js.nix
+    ./emacs.nix
   ];
 }
