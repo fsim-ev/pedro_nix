@@ -19,5 +19,5 @@ in {
 
   "wiki-js-env-file.age".publicKeys = authed;
 
-  "openwebui-env-file.age".publicKeys = authed;
+  "open-webui-env-file.age".publicKeys = authed;
 }
