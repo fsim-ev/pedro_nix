@@ -56,5 +56,14 @@
       ];
       initialPassword = "changeme";
     };
+
+    remote-builder = {
+      isNormalUser = true;
+
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFrLa7hKhD0yo17zxeyEbwLgz5VQYwPSqALZqpPXY+f5 ole"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID2A+6WAfGhy5xd4jHcCg7bTh2IFIQO3nlpfrY3/l84u leo@lpl"
+      ];
+    };
   };
 }
