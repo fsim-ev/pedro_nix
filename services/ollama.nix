@@ -4,7 +4,7 @@
 }:{
   age.secrets = {
     open-webui-env-file = {
-      file = ../secrets/openwebui-env-file.age;
+      file = ../secrets/open-webui-env-file.age;
     };
   };
 
@@ -12,13 +12,11 @@
   
   services.ollama = {
     enable = true;
-    # package = unstable.ollama;
     acceleration = "cuda";
   };
 
   services.open-webui = {
     enable = true;
-    # package = unstable.open-webui;
     environmentFile = config.age.secrets.open-webui-env-file.path;
     host = "localhost";
     port = 16753;
