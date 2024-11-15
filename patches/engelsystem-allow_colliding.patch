@@ -1,0 +1,23 @@
+diff --git a/includes/model/Shifts_model.php b/includes/model/Shifts_model.php
+index 4d14706c..34738685 100644
+--- a/includes/model/Shifts_model.php
++++ b/includes/model/Shifts_model.php
+@@ -372,18 +372,6 @@ function ShiftEntries_by_ShiftsFilter(ShiftsFilter $shiftsFilter)
+  */
+ function Shift_collides(Shift $shift, $shifts)
+ {
+-    foreach ($shifts as $other_shift) {
+-        if ($shift->id != $other_shift->id) {
+-            if (
+-                !(
+-                    $shift->start->timestamp >= $other_shift->end->timestamp
+-                    || $shift->end->timestamp <= $other_shift->start->timestamp
+-                )
+-            ) {
+-                return true;
+-            }
+-        }
+-    }
+     return false;
+ }
+ 

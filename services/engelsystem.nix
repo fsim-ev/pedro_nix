@@ -1,19 +1,20 @@
-{
-  ...
-}:{
+{ pkgs, ... }: {
   services.engelsystem = {
     enable = true;
     domain = "katzen.fsim-ev.de";
     createDatabase = true;
+    package = pkgs.engelsystem.overrideAttrs {
+      patches = (../patches/engelsystem-allow_colliding.patch);
+    };
     # configuration options with explanations can be found at
     # https://github.com/engelsystem/engelsystem/blob/main/config/config.default.php
     settings = {
       database = {
-  	    database = "engelsystem";
-  	    host = "localhost";
-  	    username = "engelsystem";
+        database = "engelsystem";
+        host = "localhost";
+        username = "engelsystem";
         # password._secret = "/path/to/secret/file";
-  	  };
+      };
       # api_keys = "";
       maintenance = false;
       app_name = "Kami-Katzensystem";
@@ -23,15 +24,17 @@
       # header_items = "";
       footer_items = {
         # disabling FAQ does not work (why?)
-  	    # FAQ = none;
+        # FAQ = none;
         Contact = "mailto:fachschaft_im@oth-regensburg.de";
         Website = "https://fsim-ev.de";
         Chat = "https://chat.fsim-ev.de";
         Cloud = "https://cloud.fsim-ev.de";
         Pad = "https://pad.fsim-ev.de";
         Wiki = "https://wiki.fsim-ev.de";
-  	  };
-      faq_text = "deal with it yourself \n I can't help you";
+      };
+      faq_text = ''
+        deal with it yourself
+         I can't help you'';
       documentation_url = "https://wiki.fsim-ev.de";
       # email = {
       #   driver = "smtp";
@@ -54,7 +57,7 @@
         # disable themes here
       };
       home_site = "user_shifts";
-     # display_news = "20";
+      # display_news = "20";
       registration_enabled = true;
       # external_registration_url = "https://someURL.here";
       required_user_fields = {
@@ -77,7 +80,7 @@
       enable_password = false;
       enable_dect = false;
       enable_mobile_show = false;
-      username_regex = "/(^\p{L}\p{N}_.-]+)/ui";
+      username_regex = "/(^p{L}p{N}_.-]+)/ui";
       enable_full_name = false;
       display_full_name = false;
       enable_pronoun = false;
@@ -153,11 +156,14 @@
       oauth = {
         sso = {
           name = "Nextcloud";
-          client_id = (builtins.readFile ../secrets/secrets/engelsystem-clientid);
-          client_secret = (builtins.readFile ../secrets/secrets/engelsystem-clientsecret);
+          client_id =
+            (builtins.readFile ../secrets/secrets/engelsystem-clientid);
+          client_secret =
+            (builtins.readFile ../secrets/secrets/engelsystem-clientsecret);
           url_auth = "https://cloud.fsim-ev.de/apps/oauth2/authorize";
           url_token = "https://cloud.fsim-ev.de/apps/oauth2/api/v1/token";
-          url_info = "https://cloud.fsim-ev.de/ocs/v2.php/cloud/user?format=json";
+          url_info =
+            "https://cloud.fsim-ev.de/ocs/v2.php/cloud/user?format=json";
           # scope = "openid";
           id = "ocs.data.id";
           username = "ocs.data.displayname";
