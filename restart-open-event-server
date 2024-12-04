@@ -1,0 +1,12 @@
+#/bin/env bash
+
+set -e 
+
+echo "Stopping services"
+sudo systemctl stop podman-opev*
+
+echo "Starting services"
+sudo systemctl start podman-opev-postgres
+sudo systemctl start podman-opev-redis
+sudo systemctl start podman-opev-web
+sudo systemctl start podman-opev-frontend

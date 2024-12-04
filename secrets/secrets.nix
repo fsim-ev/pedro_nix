@@ -20,4 +20,6 @@ in {
   "wiki-js-env-file.age".publicKeys = authed;
 
   "open-webui-env-file.age".publicKeys = authed;
+
+  "paperless-ngx-admin.age".publicKeys = authed;
 }

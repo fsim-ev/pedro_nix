@@ -28,5 +28,6 @@ in {
     yazi ranger
     nushell
     inputs.agenix.packages.x86_64-linux.default
+    docker-compose
   ] ++ cudaPkgs ++ helixLSPs;
 }

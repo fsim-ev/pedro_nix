@@ -18,5 +18,7 @@
     ./znapzend.nix
     ./wiki-js.nix
     ./emacs.nix
+    # ./open-event-server.nix
+    ./paperless-ngx.nix
   ];
 }
