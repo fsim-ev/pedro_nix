@@ -20,5 +20,6 @@
     ./emacs.nix
     # ./open-event-server.nix
     ./paperless-ngx.nix
+    ./monero.nix
   ];
 }

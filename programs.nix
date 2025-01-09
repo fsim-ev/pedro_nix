@@ -29,5 +29,6 @@ in {
     nushell
     inputs.agenix.packages.x86_64-linux.default
     docker-compose
+    nix-output-monitor
   ] ++ cudaPkgs ++ helixLSPs;
 }
