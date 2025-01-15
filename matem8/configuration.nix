@@ -20,8 +20,6 @@
     "flakes"
   ];
 
-  networking.hostName = "nixos";
-
   services.xserver.enable = true;
 
   programs.firefox.enable = true;
