@@ -17,6 +17,11 @@
           # presend = "zfs mount -R storage/backup";
         };
       };
+
+      "storage/services/strichliste" = {
+        plan = "10d=>1h";
+        dataset = "storage/new-backup";
+      };
     };
   };
 }
