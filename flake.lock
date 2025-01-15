@@ -86,7 +86,8 @@
       "inputs": {
         "agenix": "agenix",
         "nixpkgs": "nixpkgs",
-        "stable-nix": "stable-nix"
+        "stable-nix": "stable-nix",
+        "strichliste": "strichliste"
       }
     },
     "stable-nix": {
@@ -102,6 +103,27 @@
         "owner": "nixos",
         "ref": "nixos-24.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "strichliste": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736919453,
+        "narHash": "sha256-6dQq/ZRhcMJr4yrzg4MINX10aVmggZ6q8/V9HGdei3g=",
+        "owner": "DestinyofYeet",
+        "repo": "nix-strichliste",
+        "rev": "a05229eaaf93958eb888e2a2522dc9b3961b531f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DestinyofYeet",
+        "ref": "docker",
+        "repo": "nix-strichliste",
         "type": "github"
       }
     },

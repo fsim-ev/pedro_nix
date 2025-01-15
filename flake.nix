@@ -13,6 +13,13 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    strichliste = {
+      url = "github:DestinyofYeet/nix-strichliste/docker";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # url = "path:///home/ole/github/strichliste.nix";
+    };
+
   };
 
   outputs = { self, nixpkgs, ...}@inputs: {
@@ -22,6 +29,8 @@
         ./configuration.nix
 
         inputs.agenix.nixosModules.default
+        # inputs.prost.nixosModules.default
+        inputs.strichliste.nixosModules.strichliste
       ];
 
 

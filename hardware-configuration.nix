@@ -64,6 +64,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/var/lib/strichliste" = {
+    device = "storage/services/strichliste";
+    fsType = "zfs";
+  };
+
   services.zfs = {
     autoScrub.enable = true;
     trim.enable = true;

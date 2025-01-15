@@ -21,5 +21,7 @@
     # ./open-event-server.nix
     ./paperless-ngx.nix
     ./monero.nix
+    # ./prost.nix
+    ./strichliste.nix
   ];
 }
