@@ -15,7 +15,7 @@
     };
 
     strichliste = {
-      url = "github:DestinyofYeet/nix-strichliste/docker";
+      url = "github:DestinyofYeet/nix-strichliste/no-docker";
       inputs.nixpkgs.follows = "nixpkgs";
       # url = "path:///home/ole/github/strichliste.nix";
     };
