@@ -7,7 +7,8 @@
       isNormalUser = true;
       shell = pkgs.nushell;
       openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIR6P1wjKP9IfEki24GKUn3ttOQvsK8qrTNTA6BQhK6R ole@wattson"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIR6P1wjKP9IfEki24GKUn3ttOQvsK8qrTNTA6BQhK6R wattson"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGKUAOne60N9LZ1PbTQgjzrtQoW+m+7OaEWTHzprIczc main"
       ];
       extraGroups = [ "wheel" "nextcloud" ];
       initialPassword = "changeme";
@@ -45,6 +46,16 @@
       ];
       initialPassword = "changeme";
     };
+
+     mat36812 = {
+      isNormalUser = true;
+      extraGroups = [ "nextcloud" "wheel" ];
+      shell = pkgs.zsh;
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtXCEbcXriOx+oyFr+j4ozhrFMEqxDvcj1zZUthjKV0"
+      ];
+      initialPassword = "changeme";
+     };
 
     scj35826 = {
       isNormalUser = true;

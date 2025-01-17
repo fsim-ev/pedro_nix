@@ -22,4 +22,6 @@ in {
   "open-webui-env-file.age".publicKeys = authed;
 
   "paperless-ngx-admin.age".publicKeys = authed;
+
+  "wireguard-priv-key-proxy-ole.age".publicKeys = authed;
 }

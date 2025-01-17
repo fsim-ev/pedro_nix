@@ -20,38 +20,9 @@
       # url = "path:///home/ole/github/strichliste.nix";
     };
 
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    rpi-nix = {
-      url = "github:nix-community/raspberry-pi-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, ...}@inputs: {
-    deploy.nodes = {
-      matem8 = {
-        hostname = "10.24.0.139";
-        profiles.system = {
-          sshUser = "root";
-          # user = "root";
-          # interactiveSudo = true;
-          path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.matem8;
-        };
-      };
-
-    nixosConfigurations.matem8 = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      modules = [
-        ./matem8
-
-        inputs.rpi-nix.nixoModules.raspberry-pi
-      ];
-    };
-
     nixosConfigurations.pedro = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -61,7 +32,6 @@
         # inputs.prost.nixosModules.default
         inputs.strichliste.nixosModules.strichliste
       ];
-    };
 
 
       specialArgs = let
