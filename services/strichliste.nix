@@ -29,6 +29,13 @@
       error_page 403 @custom403;
     '';
 
+    locations."/api/metrics" = {
+      extraConfig = ''
+        deny all;
+      '';
+    };
+
+
     locations = {
       "@custom403" = {
         extraConfig = ''
@@ -53,19 +60,16 @@
           "strichliste.*" = "ALL PRIVILEGES";
         };
       }
+      {
+        name = "grafana";
+        ensurePermissions = {
+          "strichliste.*" = "SELECT";
+        };
+      }
     ];
 
     ensureDatabases = [
       "strichliste"
     ];
-  };
-
-  users = {
-    users.strichliste = {
-      isSystemUser = true;
-      group = "strichliste";
-    };
-
-    groups.strichliste = {};
   };
 }

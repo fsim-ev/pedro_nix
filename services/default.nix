@@ -23,5 +23,6 @@
     ./monero.nix
     # ./prost.nix
     ./strichliste.nix
+    ./grafana.nix
   ];
 }
