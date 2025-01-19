@@ -113,16 +113,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1737074179,
-        "narHash": "sha256-fV95a70IQNKEsBFhsXTxvA7bwCcT51Y/Fg0G3zJgutk=",
+        "lastModified": 1737295453,
+        "narHash": "sha256-sh005TsgCrmAKYX/g7mftuAhS9RsKoWs810cjwg0fEY=",
         "owner": "DestinyofYeet",
         "repo": "nix-strichliste",
-        "rev": "563d8d0c8f436f66f3f3758ee49df2167db55db8",
+        "rev": "5d8bfb95edc3f55e40b3683e425420b6faefce37",
         "type": "github"
       },
       "original": {
         "owner": "DestinyofYeet",
-        "ref": "no-docker",
+        "ref": "custom-frontend",
         "repo": "nix-strichliste",
         "type": "github"
       }
