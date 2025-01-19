@@ -10,7 +10,7 @@
         http_addr = "127.0.0.1";
         http_port = 45128;
 
-        domain = "dev.fsim-ev.de";
+        domain = "stats.fsim-ev.de";
       };
 
       analytics.reporting_enabled = false;
