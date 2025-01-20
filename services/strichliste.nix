@@ -6,8 +6,8 @@
     enable = true;
 
     frontEnd = builtins.fetchTarball {
-      url = "https://git.ole.blue/ole/strichliste-frontend/raw/commit/6e5f68c0f5f28ff9024ff3af5ef0e64a96b2c948/build.tar";
-      sha256 = "1527pdg2y1saj2n13zlnjl8sqcnh3lr702v6x761nag11nagdgqz";
+      url = "https://git.ole.blue/ole/strichliste-frontend/raw/commit/d7ecc68efc506b26227921f2a3975cb38d76c693/build.tar";
+      sha256 = "1ny2sia2h8wm2fy3x9vm83cq3355n1hyzvxfcl8h0j8d9a159i1z";
     };
 
     nginxSettings = {
