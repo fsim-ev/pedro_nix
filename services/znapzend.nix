@@ -21,9 +21,11 @@
 
       "storage/services/strichliste" = {
         plan = "10d=>1h";
-        dataset = "storage/new-backup";
 
-        destinations.remote = defaultRemote;
+        destinations.remote = {
+          dataset = "storage/new-backup/strichliste";
+          inherit (defaultRemote) host;
+        };
       };
     };
   };
