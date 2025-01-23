@@ -78,13 +78,6 @@
           ];
         }
         {
-          # Snickers
-          id = 16;
-          sounds = [
-            ./strichliste/snickers_1.wav
-          ];
-        }
-        {
           # Maoam
           id = 19;
           sounds = [
@@ -119,6 +112,13 @@
           id = 25;
           sounds = [
             ./strichliste/pizza_1.wav
+          ];
+        }
+        {
+          # Snickers
+          id = 26;
+          sounds = [
+            ./strichliste/snickers_1.wav
           ];
         }
         {
