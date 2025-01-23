@@ -155,8 +155,8 @@
     databaseUrl = "mysql://strichliste@localhost/strichliste";
 
     settings = {
-      payment.boundary.upper = 200000;
-      account.boundary.upper = 200000;
+      payment.boundary.lower = -5000;
+      account.boundary.lower = -1000;
 
       article.autoOpen = true;
     };
