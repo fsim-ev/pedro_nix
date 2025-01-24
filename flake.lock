@@ -113,11 +113,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737623440,
-        "narHash": "sha256-h61OvLSZ866rawYQipib2tW2kMOCPf8JFEl7ZTX1yZ0=",
+        "lastModified": 1737732728,
+        "narHash": "sha256-56Cr7WFLWvMDb/PMqf3PjTg4Rjyowy4f2OCmmrYefZ8=",
         "owner": "DestinyofYeet",
         "repo": "nix-strichliste",
-        "rev": "bf7d60983002de39867fffe5c134550300e3d773",
+        "rev": "26517937a2017887698ad967d5d128c2c23c0a2c",
         "type": "github"
       },
       "original": {

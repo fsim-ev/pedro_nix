@@ -26,125 +26,124 @@
         ./strichliste/futterlucke.wav
       ];
 
-      specificSounds = [
-        {
+      specificSounds = {
+        "1" = {
           # Mio Mio Mate
-          id = 1;
           sounds = [
             ./strichliste/mate_01.wav
           ];
-        }
-        {
+        };
+
+        "3" = {
           # Wasser
-          id = 3;
           sounds = [
-            ./strichliste/wasser_1.wav 
+            ./strichliste/wasser_1.wav
           ];
-        }
-        {
-          # Club mate
-          id = 4;
+        };
+
+        "4" = {
+          # Club Mate
           sounds = [
             ./strichliste/club_mate_1.wav
             ./strichliste/mate_01.wav
           ];
-        }
-        {
+        };
+
+        "6" = {
           # Saftschorle
-          id = 6;
           sounds = [
             ./strichliste/moneyboy_orangensaft.wav
           ];
-        }
-        {
+        };
+
+        "9" = {
           # Bueno
-          id = 9;
           sounds = [
             ./strichliste/bueno_1.wav
           ];
-        }
-        {
+        };
+
+        "12" = {
           # Erdnüsse klein
-          id = 12;
           sounds = [
             ./strichliste/eier.wav
           ];
-        }
-        {
+        };
+
+        "14" = {
           # Belaste
-          id = 14;
           sounds = [
             ./strichliste/emotional-damage.wav
           ];
-        }
-        {
+        };
+
+        "19" = {
           # Maoam
-          id = 19;
           sounds = [
             ./strichliste/maoam_1.wav
           ];
-        }
-        {
+        };
+
+        "20" = {
           # Mentos
-          id = 20;
           sounds = [
             ./strichliste/eier.wav
           ];   
-        }
-        {
+        };
+
+        "23" = {
           # Spezi
-          id = 23;
           sounds = [
             ./strichliste/spezifische_spezi_fischer.wav
           ];
-        }
-        {
+        };
+
+        "24" = {
           # Kaffee
-          id = 24;
           sounds = [
             ./strichliste/coffee.wav
             ./strichliste/coffee_2.wav
             ./strichliste/coffee_3.wav
           ];         
-        }
-        {
+        };
+
+        "25" = {
           # Pizza
-          id = 25;
           sounds = [
             ./strichliste/pizza_1.wav
           ];
-        }
-        {
+        };
+
+        "26" = {
           # Snickers
-          id = 26;
           sounds = [
             ./strichliste/snickers_1.wav
           ];
-        }
-        {
+        };
+
+        "27" = {
           # Radler
-          id = 27;
           sounds = [
             ./strichliste/radler.wav
           ];
-        }
-        {
+        };
+
+        "28" = {
           # Mio Mio Banane
-          id = 28;
           sounds = [
             ./strichliste/minion_banana.wav
             ./strichliste/mio_mio_banana_2.wav
           ];
-        }
-        {
+        };
+
+        "30" = {
           # Duplo
-          id = 30;
           sounds = [
             ./strichliste/duplo_1.wav
             ./strichliste/duplo_2.wav
           ];
-        }
-      ];
+        };
+      };
     };
 
     nginxSettings = {
