@@ -63,6 +63,7 @@
             ./strichliste/bier_2.wav
             ./strichliste/bier_3.wav
             ./strichliste/bier_4.wav
+            ./strichliste/bier_5.wav
           ];
         };
 
