@@ -56,6 +56,16 @@
           ];
         };
 
+        "7"= {
+          # Bier
+          sounds = [
+            ./strichliste/bier_1.wav
+            ./strichliste/bier_2.wav
+            ./strichliste/bier_3.wav
+            ./strichliste/bier_4.wav
+          ];
+        };
+
         "9" = {
           # Bueno
           sounds = [
