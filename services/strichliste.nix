@@ -44,27 +44,23 @@
           ./strichliste/emotional-damage.wav
         ];
       in {
-        "3" = {
-          # Wasser
+        "Wasser" = {
           sounds = [
             ./strichliste/wasser_1.wav
           ];
         };
 
-        "35" = {
-          # Club Mate
+        "Club Mate" = {
           sounds = [
             ./strichliste/club_mate_1.wav
           ] ++ mioMioMateSounds;
         };
 
-        "6" = {
-          # Saftschorle
+        "Saft Apfel+Cranberry-Heidelbeere" = {
           sounds = saftSchorleSounds;
         };
 
-        "52" = {
-          # Bier
+        "Bier" = {
           sounds = [
             ./strichliste/bier_1.wav
             ./strichliste/bier_2.wav
@@ -74,53 +70,45 @@
           ];
         };
 
-        "9" = {
-          # Bueno
+        "Bueno" = {
           sounds = [
             ./strichliste/bueno_1.wav
           ];
         };
 
-        "12" = {
-          # Erdnüsse klein
+        "Erdnüsse klein" = {
           sounds = [
             ./strichliste/eier.wav
           ];
         };
 
-        "61" = {
-          # Belasto orange
+        "Belasto (Balisto) orange" = {
           sounds = belastoSounds;
         };
 
-        "62" = {
-          # Belasto grün
+        "Belasto (Balisto) grün" = {
           sounds = belastoSounds;
         };
 
-        "40" = {
-          # Maoam
+        "Maoam Bloxx" = {
           sounds = [
             ./strichliste/maoam_1.wav
           ];
         };
 
-        "41" = {
-          # Mentos
+        "Mentos klein" = {
           sounds = [
             ./strichliste/eier.wav
           ];   
         };
 
-        "34" = {
-          # Spezi
+        "Spezi" = {
           sounds = [
             ./strichliste/spezifische_spezi_fischer.wav
           ];
         };
 
-        "64" = {
-          # Kaffee
+        "Kaffee" = {
           sounds = [
             ./strichliste/coffee.wav
             ./strichliste/coffee_2.wav
@@ -128,77 +116,64 @@
           ];         
         };
 
-        "25" = {
-          # Pizza
+        "Pizza" = {
           sounds = [
             ./strichliste/pizza_1.wav
           ];
         };
 
-        "26" = {
-          # Snickers
+        "Snickers classic" = {
           sounds = [
             ./strichliste/snickers_1.wav
           ];
         };
 
-        "54" = {
-          # Radler
+        "Radler" = {
           sounds = [
             ./strichliste/radler.wav
           ];
         };
 
-        "28" = {
-          # Mio Mio Banane
+        "Mio Mio Banane" = {
           sounds = [
             ./strichliste/minion_banana.wav
             ./strichliste/mio_mio_banana_2.wav
           ];
         };
 
-        "36" = {
-          # Mio Mio Zero
+        "Mio Mio Zero" = {
           sounds = mioMioMateSounds;
         };
 
-        "37" = {
-          # Mio Mio Ginger
+        "Mio Mio Ginger" = {
           sounds = mioMioMateSounds;
         };
 
-        "38" = {
-          # Mio Mio Mate
+        "Mio Mio Mate" = {
           sounds = mioMioMateSounds;
         };
 
-        "39" = {
-          # Mio Mio Cola
+        "Mio Mio Cola" = {
           sounds = mioMioMateSounds;
         };
 
-        "42" = {
-          # Saftschorle Cran Berry
+        "Saft Apfel+Johannisbeeren" = {
           sounds = saftSchorleSounds;
         };
 
-        "49" = {
-          # Apfelschorle
+        "Apfelschorle" = {
           sounds = saftSchorleSounds;
         };
 
-        "50" = {
-          # Apfelschrole Naturtrüb
+        "Apfelschorle naturtrüb" = {
           sounds = saftSchorleSounds;
         };
 
-        "51" = {
-          # Duplo
+        "Duplo classic" = {
           sounds = duploSounds;
         };
 
-        "53" = {
-          # Duplo
+        "Duplo White" = {
           sounds = duploSounds;
         };
       };
