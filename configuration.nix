@@ -23,7 +23,7 @@
   };
 
   nix.gc = {
-    automatic = true;
+    automatic = false;
     persistent = true;
 
     options = "--delete-older-than +10";

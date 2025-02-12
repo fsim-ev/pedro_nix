@@ -19,6 +19,16 @@ in {
   programs.zsh.enable = true;
   programs.fish.enable = true;
 
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep 10";
+      dates = "daily";
+    };
+
+  };
+
   environment.systemPackages = with pkgs; [
     vim helix neovim
     bat lolcat less
