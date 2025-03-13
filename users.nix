@@ -9,6 +9,7 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIR6P1wjKP9IfEki24GKUn3ttOQvsK8qrTNTA6BQhK6R wattson"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGKUAOne60N9LZ1PbTQgjzrtQoW+m+7OaEWTHzprIczc main"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2oTtiXMyuSFiAwGF2s29J7ShRTXqST6Uxc+obT0Y+u kartoffelkiste"
       ];
       extraGroups = [ "wheel" "nextcloud" ];
       initialPassword = "changeme";
