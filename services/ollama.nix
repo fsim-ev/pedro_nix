@@ -24,7 +24,10 @@
 
   services.nginx.virtualHosts = {
     "ai.fsim-ev.de" = {
-      locations."/".proxyPass = "http://localhost:${builtins.toString config.services.open-webui.port}";
+      locations."/" = {
+        proxyWebsockets = true;
+        proxyPass = "http://localhost:${builtins.toString config.services.open-webui.port}";
+      };
       forceSSL = true;
       enableACME = true;
     };
