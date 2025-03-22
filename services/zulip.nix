@@ -16,6 +16,17 @@
     zulip-rabbitmq-conf-file = {
       file = ../secrets/zulip-rabbitmq-env-file.age;
     };
+
+    zulip-secrets = {
+      file = ../secrets/zulip-secrets.age;
+      group = "wheel";
+      mode = "a+r"; #FIXME this shoudl be more granular
+    };
+    zulip-redis = {
+      file = ../secrets/zulip-redis.age;
+      group = "wheel";
+      mode = "a+r"; #FIXME this shoudl be more granular
+    };
   };
 
   virtualisation.oci-containers.containers = rec {
@@ -39,7 +50,7 @@
         "/var/log/zulip:/var/log/zulip"
         "${./zulip/zulip.conf}:/etc/zulip/zulip.conf"
         "${./zulip/settings.py}:/etc/zulip/settings.py"
-        "${../secrets/secrets/zulip}:/etc/zulip/zulip-secrets.conf"
+        "${config.age.secrets.zulip-secrets.path}:/etc/zulip/zulip-secrets.conf"
       ];
       extraOptions = [ "--network=container:chat-db" ];
     };
@@ -61,7 +72,7 @@
       cmd = [ "/etc/redis.conf" ];
       volumes = [
         "/var/lib/zulip/redis:/data:rw"
-        "${../secrets/secrets/zulip-redis.conf}:/etc/redis.conf"
+        "${config.age.secrets.zulip-redis.path}:/etc/redis.conf"
       ];
       extraOptions = [ "--network=container:chat-db" ];
     };

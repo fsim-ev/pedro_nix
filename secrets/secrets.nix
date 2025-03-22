@@ -16,6 +16,8 @@ in {
   "zulip-env-file.age".publicKeys = authed;
   "zulip-db-env-file.age".publicKeys = authed;
   "zulip-rabbitmq-env-file.age".publicKeys = authed;
+  "zulip-secrets.age".publicKeys = authed;
+  "zulip-redis.age".publicKeys = authed;
 
   "wiki-js-env-file.age".publicKeys = authed;
 
