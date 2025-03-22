@@ -37,9 +37,9 @@
       volumes = [
         "/var/lib/zulip:/data"
         "/var/log/zulip:/var/log/zulip"
-        (toString ./zulip/zulip.conf + ":/etc/zulip/zulip.conf")
-        (toString ./zulip/settings.py + ":/etc/zulip/settings.py")
-        (toString ../secrets/secrets/zulip + ":/etc/zulip/zulip-secrets.conf")
+        "${./zulip/zulip.conf}:/etc/zulip/zulip.conf"
+        "${./zulip/settings.py}:/etc/zulip/settings.py"
+        "${../secrets/secrets/zulip}:/etc/zulip/zulip-secrets.conf"
       ];
       extraOptions = [ "--network=container:chat-db" ];
     };
@@ -61,7 +61,7 @@
       cmd = [ "/etc/redis.conf" ];
       volumes = [
         "/var/lib/zulip/redis:/data:rw"
-        (toString ../secrets/secrets/zulip-redis.conf + ":/etc/redis.conf")
+        "${../secrets/secrets/zulip-redis.conf}:/etc/redis.conf"
       ];
       extraOptions = [ "--network=container:chat-db" ];
     };
