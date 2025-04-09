@@ -20,6 +20,13 @@
     environmentFile = config.age.secrets.open-webui-env-file.path;
     host = "localhost";
     port = 16753;
+    environment = {
+      ANONYMIZED_TELEMETRY = "False";
+      DO_NOT_TRACK = "True";
+      SCARF_NO_ANALYTICS = "True";
+      BYPASS_MODEL_ACCESS_CONTROL = "True";
+    }; 
+
   };
 
   services.nginx.virtualHosts = {
