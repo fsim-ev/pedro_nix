@@ -14,7 +14,7 @@
 
   services.nextcloud = {
     enable = true;
-    package = stable.nextcloud30.overrideAttrs {
+    package = stable.nextcloud31.overrideAttrs {
       patches = (../patches/nextcloud-remove-notify-nag.patch);
     };
 
