@@ -82,12 +82,29 @@
         "type": "github"
       }
     },
+    "papermod-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741456800,
+        "narHash": "sha256-cngqhHN/dNO5XdVfzlMGS4V9zfyAOvTCtA2BdWpUCC4=",
+        "owner": "adityatelange",
+        "repo": "hugo-PaperMod",
+        "rev": "72615b6d49ab8b102e92e2e487ab420f41ba9223",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adityatelange",
+        "repo": "hugo-PaperMod",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
         "nixpkgs": "nixpkgs",
         "stable-nix": "stable-nix",
-        "strichliste": "strichliste"
+        "strichliste": "strichliste",
+        "website": "website"
       }
     },
     "stable-nix": {
@@ -138,6 +155,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "website": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "papermod-theme": "papermod-theme"
+      },
+      "locked": {
+        "lastModified": 1744499376,
+        "narHash": "sha256-BB2X8J5bXDTutJVichEcUbUjWLqllhpr3ua/UHGu0IU=",
+        "owner": "fsim-ev",
+        "repo": "website",
+        "rev": "85539b49f8a66a999cab7a4281080eae43802218",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fsim-ev",
+        "repo": "website",
         "type": "github"
       }
     }

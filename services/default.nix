@@ -24,5 +24,6 @@
     # ./prost.nix
     ./strichliste.nix
     ./grafana.nix
+    ./homepage.nix
   ];
 }

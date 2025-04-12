@@ -19,6 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    website = {
+      url = "github:fsim-ev/website";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ...}@inputs: {
