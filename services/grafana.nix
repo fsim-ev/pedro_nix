@@ -23,4 +23,5 @@
 
     locations."/".proxyPass = let grafana_cfg = config.services.grafana.settings.server;  in "http://${grafana_cfg.http_addr}:${toString grafana_cfg.http_port}";
   };
+
 }
