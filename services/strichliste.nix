@@ -199,6 +199,8 @@
     enableACME = true;
 
     locations."/".extraConfig = ''
+      allow 127.0.0.1;
+      allow 195.37.211.44;
       allow 172.20.36.242/32;
       deny all;
 

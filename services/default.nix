@@ -25,5 +25,6 @@
     ./strichliste.nix
     ./grafana.nix
     ./homepage.nix
+    ./uptime-kuma.nix
   ];
 }
