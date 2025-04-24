@@ -8,7 +8,8 @@
   ];
 
   helixLSPs = with pkgs; [
-    nil # nix lsp
+    # nil # nix lsp
+    nixd # better nix lsp
   ];
 in {
   security = {
