@@ -30,7 +30,7 @@
     dates = "05:00:00"; 
   };
 
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   system.stateVersion = "24.05"; # Did you read the comment?
 
   time.timeZone = "Europe/Berlin";

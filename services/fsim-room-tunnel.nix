@@ -41,4 +41,6 @@
     };
   };
 
+networking.firewall.allowedTCPPorts = [ config.networking.wireguard.interfaces.wg0.listenPort ];
+
 }

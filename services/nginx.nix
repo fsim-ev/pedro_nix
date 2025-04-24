@@ -14,4 +14,5 @@
     acceptTerms = true;
     defaults.email = "fachschaft_im@oth-regensburg.de";
   };
+  networking.firewall.allowedTCPPorts = [80 443];
 }

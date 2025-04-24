@@ -1,6 +1,9 @@
 {
   ...
-}:{
+}:
+let port = 25565;
+in
+{
   virtualisation.oci-containers.containers.minecraft = {
     image = "itzg/minecraft-server:latest";
     environment = {
@@ -24,12 +27,13 @@
       EULA = "TRUE";
       EXISTING_WHITELIST_FILE = "MERGE";
       USE_SIMD_FLAGS = "TRUE";
-      UID = "25565";
-      GID = "25565";
+      UID = toString port;
+      GID = toString port;
     };
     volumes = [
       "/var/lib/minecraft:/data:rw"
     ];
-    ports = [ "25565:25565" ];
+    ports = [ "${toString port}:${toString port}" ];
   };
+networking.firewall.allowedUDPPorts = [ port ];
 }

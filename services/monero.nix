@@ -1,4 +1,5 @@
 {
+config,
   ...
 }:{
   services.monero = {
@@ -10,4 +11,5 @@
       confirm-external-bind=1
     '';
   };  
+  networking.firewall.allowedTCPPorts = [ config.services.monero.rpc.port 18080 18081 18082];
 }
