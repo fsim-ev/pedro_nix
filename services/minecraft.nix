@@ -35,5 +35,9 @@ in
     ];
     ports = [ "${toString port}:${toString port}" ];
   };
-networking.firewall.allowedUDPPorts = [ port ];
+
+  networking.firewall = {
+    allowedUDPPorts = [ port ];
+    allowedTCPPorts = [ port];
+  };
 }
