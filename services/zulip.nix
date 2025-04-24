@@ -3,7 +3,9 @@
   config,
   pkgs,
   ...
-}:{
+}: let
+  image_tag = "10.1-0";
+in {
   age.secrets = {
     zulip-env-file = {
       file = ../secrets/zulip-env-file.age;
@@ -31,7 +33,7 @@
 
   virtualisation.oci-containers.containers = rec {
     chat = {
-      image = "zulip/docker-zulip:8.4-0";
+      image = "zulip/docker-zulip:${image_tag}";
       dependsOn = [ "chat-db" "chat-cache" "chat-mqueue" ];
       # hack
       cmd = [ "/bin/sh" "-c" "/home/zulip/deployments/current/scripts/zulip-puppet-apply -f && entrypoint.sh app:run" ];
