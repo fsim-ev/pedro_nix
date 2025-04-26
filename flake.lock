@@ -121,7 +121,8 @@
         "passbolt": "passbolt",
         "stable-nix": "stable-nix",
         "strichliste": "strichliste",
-        "website": "website"
+        "website": "website",
+        "zulip": "zulip"
       }
     },
     "stable-nix": {
@@ -193,6 +194,22 @@
       "original": {
         "owner": "fsim-ev",
         "repo": "website",
+        "type": "github"
+      }
+    },
+    "zulip": {
+      "locked": {
+        "lastModified": 1745625933,
+        "narHash": "sha256-1C7gPP06rzSQPmQlswtjzI3v/nvhhGsxlhwa8JctIkQ=",
+        "owner": "fsim-ev",
+        "repo": "docker_tag_flake",
+        "rev": "c69cde196193a2f160b5a9bbd8ce324719286d35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fsim-ev",
+        "ref": "zulip/docker-zulip",
+        "repo": "docker_tag_flake",
         "type": "github"
       }
     }

@@ -23,6 +23,8 @@
       url = "github:fsim-ev/website";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zulip.url = "github:fsim-ev/docker_tag_flake/zulip/docker-zulip";
     passbolt.url = "github:fsim-ev/docker_tag_flake/passbolt/passbolt";
   };
 
