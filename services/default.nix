@@ -26,5 +26,6 @@
     ./grafana.nix
     ./homepage.nix
     ./uptime-kuma.nix
+    ./renovate.nix
   ];
 }

@@ -26,4 +26,7 @@ in {
   "paperless-ngx-admin.age".publicKeys = authed;
 
   "wireguard-priv-key-proxy-ole.age".publicKeys = authed;
+
+  "renovate-bot-token.age".publicKeys = authed;
+  "renovate-github-token.age".publicKeys = authed;
 }
