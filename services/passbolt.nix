@@ -1,13 +1,15 @@
 {
+  inputs,
   ...
-}:let
+} : let
   domain = "pass.fsim-ev.de";
   port = "8003";
-  image_tag = "5.0.0-1-ce";
+  image_name = inputs.passbolt.image."passbolt/passbolt".name;
+  image_tag = inputs.passbolt.image."passbolt/passbolt".tag;
 in {
   virtualisation.oci-containers.containers = {
     passbolt = {
-      image = "passbolt/passbolt:${image_tag}";
+      image = "${image_name}:${image_tag}";
       dependsOn = [ "passbolt-db" ];
 
       volumes = let 

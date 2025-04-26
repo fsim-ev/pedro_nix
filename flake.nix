@@ -23,6 +23,7 @@
       url = "github:fsim-ev/website";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    passbolt.url = "github:fsim-ev/docker_tag_flake/passbolt/passbolt";
   };
 
   outputs = { self, nixpkgs, ...}@inputs: {

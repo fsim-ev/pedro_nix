@@ -98,10 +98,27 @@
         "type": "github"
       }
     },
+    "passbolt": {
+      "locked": {
+        "lastModified": 1745626021,
+        "narHash": "sha256-Hnycbyw4TVa6hUbz8R7jkOQ8RkRWMCcz+jVUJBin1Vs=",
+        "owner": "fsim-ev",
+        "repo": "docker_tag_flake",
+        "rev": "8a65e4399584e63e508cb3b2b77ff572542e0db5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fsim-ev",
+        "ref": "passbolt/passbolt",
+        "repo": "docker_tag_flake",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
         "nixpkgs": "nixpkgs",
+        "passbolt": "passbolt",
         "stable-nix": "stable-nix",
         "strichliste": "strichliste",
         "website": "website"
