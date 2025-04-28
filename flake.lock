@@ -45,6 +45,38 @@
         "type": "github"
       }
     },
+    "docker-tag-passbolt": {
+      "locked": {
+        "lastModified": 1745626021,
+        "narHash": "sha256-Hnycbyw4TVa6hUbz8R7jkOQ8RkRWMCcz+jVUJBin1Vs=",
+        "owner": "fsim-ev",
+        "repo": "docker_tag_flake",
+        "rev": "8a65e4399584e63e508cb3b2b77ff572542e0db5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fsim-ev",
+        "ref": "passbolt/passbolt",
+        "repo": "docker_tag_flake",
+        "type": "github"
+      }
+    },
+    "docker-tag-zulip": {
+      "locked": {
+        "lastModified": 1745628795,
+        "narHash": "sha256-xjQ99rij/uQDwiTgWvDJPDiytljXXxXtSPEgTg9BSr0=",
+        "owner": "fsim-ev",
+        "repo": "docker_tag_flake",
+        "rev": "b8ecc34edb6830f3125cb03dbd8b0e0f754a4e87",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fsim-ev",
+        "ref": "zulip/docker-zulip",
+        "repo": "docker_tag_flake",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -98,31 +130,15 @@
         "type": "github"
       }
     },
-    "passbolt": {
-      "locked": {
-        "lastModified": 1745626021,
-        "narHash": "sha256-Hnycbyw4TVa6hUbz8R7jkOQ8RkRWMCcz+jVUJBin1Vs=",
-        "owner": "fsim-ev",
-        "repo": "docker_tag_flake",
-        "rev": "8a65e4399584e63e508cb3b2b77ff572542e0db5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fsim-ev",
-        "ref": "passbolt/passbolt",
-        "repo": "docker_tag_flake",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "docker-tag-passbolt": "docker-tag-passbolt",
+        "docker-tag-zulip": "docker-tag-zulip",
         "nixpkgs": "nixpkgs",
-        "passbolt": "passbolt",
         "stable-nix": "stable-nix",
         "strichliste": "strichliste",
-        "website": "website",
-        "zulip": "zulip"
+        "website": "website"
       }
     },
     "stable-nix": {
@@ -194,22 +210,6 @@
       "original": {
         "owner": "fsim-ev",
         "repo": "website",
-        "type": "github"
-      }
-    },
-    "zulip": {
-      "locked": {
-        "lastModified": 1745625933,
-        "narHash": "sha256-1C7gPP06rzSQPmQlswtjzI3v/nvhhGsxlhwa8JctIkQ=",
-        "owner": "fsim-ev",
-        "repo": "docker_tag_flake",
-        "rev": "c69cde196193a2f160b5a9bbd8ce324719286d35",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fsim-ev",
-        "ref": "zulip/docker-zulip",
-        "repo": "docker_tag_flake",
         "type": "github"
       }
     }

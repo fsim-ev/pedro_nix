@@ -4,8 +4,8 @@
 } : let
   domain = "pass.fsim-ev.de";
   port = "8003";
-  image_name = inputs.passbolt.image."passbolt/passbolt".name;
-  image_tag = inputs.passbolt.image."passbolt/passbolt".tag;
+  image_name = inputs.docker-tag-passbolt.image."passbolt/passbolt".name;
+  image_tag = inputs.docker-tag-passbolt.image."passbolt/passbolt".tag;
 in {
   virtualisation.oci-containers.containers = {
     passbolt = {

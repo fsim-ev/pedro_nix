@@ -5,8 +5,8 @@
   inputs,
   ...
 } : let
-  image_name = inputs.zulip.image."zulip/docker-zulip".name;
-  image_tag = inputs.zulip.image."zulip/docker-zulip".tag;
+  image_name = inputs.docker-tag-zulip.image."zulip/docker-zulip".name;
+  image_tag = inputs.docker-tag-zulip.image."zulip/docker-zulip".tag;
 in {
   age.secrets = {
     zulip-env-file = {

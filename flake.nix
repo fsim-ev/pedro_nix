@@ -24,8 +24,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zulip.url = "github:fsim-ev/docker_tag_flake/zulip/docker-zulip";
-    passbolt.url = "github:fsim-ev/docker_tag_flake/passbolt/passbolt";
+    docker-tag-zulip.url = "github:fsim-ev/docker_tag_flake/zulip/docker-zulip";
+    docker-tag-passbolt.url = "github:fsim-ev/docker_tag_flake/passbolt/passbolt";
   };
 
   outputs = { self, nixpkgs, ...}@inputs: {
