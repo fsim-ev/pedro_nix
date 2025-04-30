@@ -27,5 +27,6 @@
     ./homepage.nix
     ./uptime-kuma.nix
     ./renovate.nix
+    ./gitlab-runner.nix
   ];
 }
