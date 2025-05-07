@@ -200,11 +200,11 @@
         "papermod-theme": "papermod-theme"
       },
       "locked": {
-        "lastModified": 1746630893,
-        "narHash": "sha256-t3SN+ZuVkzin/Dd21qtiDzonFugYDdoAOjnXiOGExOY=",
+        "lastModified": 1746645087,
+        "narHash": "sha256-J81aOl5ist4SeETybpgEpivKmju9a+EwXyzO0+Tf6Gw=",
         "owner": "fsim-ev",
         "repo": "website",
-        "rev": "7fb3917bb88523ff990eda4c15e8c5ab7a23e73a",
+        "rev": "900f4052017471d6a8f419385abe7fb8742bef20",
         "type": "github"
       },
       "original": {
