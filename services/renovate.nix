@@ -25,7 +25,7 @@
       ignoreTests = true;
       baseBranches = [ "/.*?/" ];
       labels = [ "dependency_update" "renovate_bot" ];
-      repositories = [ "IM/Lab_fachschaft/docker_image_flake" ];
+      repositories = [ "IM/Lab_fachschaft/docker_image_flake" "IM/Lab_fachschaft/website-hugo" ];
       prConcurrentLimit = 0;
       prHourlyLimit = 0;
       # customManagers = [
