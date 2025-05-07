@@ -40,56 +40,83 @@
     ];
   };
 
+  services.anubis.instances.examia = {
+    enable = true;
 
-  services.nginx.virtualHosts."examia.de" = {
-    forceSSL = true;
-    enableACME = true;
-    serverAliases = ["www.examia.de"];
-    root = "/var/lib/www/examia.de";
-    locations."/".index = "index.php";
-    extraConfig = ''
-      index index.php index.html /index.php$request_uri;
-      # Disallow senible phpbb files
-      location ~ /(config\.php|common\.php|cache|files|images/avatars/upload|includes|store) {
-        deny all;
-        return 403;
-      }
+    settings = {
+      TARGET = "unix:///run/nginx/nginx-examia.sock";
+      BIND = ":8786";
+    };
+  };
 
-      location ~ /\.git {
-        deny all;
-      }
 
-      # Disallow accessing .htaccess files
-      location ~/\.ht {
-        deny all;
-      }
+  services.nginx.virtualHosts = {
+    "examia.de-frontend" = {
+      serverName = "examia.de";
+      serverAliases = ["www.examia.de"];
 
-      location ~* \.(gif|jpe?g|png|css)$ {
-        expires 30d;
-      }
+      forceSSL = true;
+      enableACME = true;
 
-      location ~ \.php$ {
-        include ${config.services.nginx.package}/conf/fastcgi.conf;
-        try_files $uri =404;
-        fastcgi_pass unix:/run/phpfpm/websrv.sock;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        fastcgi_param PATH_INFO $fastcgi_path_info;
-        fastcgi_index index.php;
-        fastcgi_param PHP_VALUE "
-          upload_max_filesize = 1G
-          max_execution_time = 60
-          max_input_time = 120
-          post_max_size = 1G
-        ";
-      }
+      locations."/".proxyPass = "http://localhost${config.services.anubis.instances.examia.settings.BIND}/";
+    };
 
-      location /app.php {
-        try_files $uri $uri/ /app.php?$query_string;
-      }
+    "examia.de-backend" = {
+      listen = [
+        {
+          addr = "unix:/run/nginx/nginx-examia.sock";
+        }
+      ];
 
-      location /install/app.php {
-        try_files $uri $uri/ /install/app.php?$query_string;
-      }
-    '';   
+      serverName = "examia.de";
+      serverAliases = ["www.examia.de"];
+
+      root = "/var/lib/www/examia.de";
+      locations."/".index = "index.php";
+      extraConfig = ''
+        index index.php index.html /index.php$request_uri;
+        # Disallow senible phpbb files
+        location ~ /(config\.php|common\.php|cache|files|images/avatars/upload|includes|store) {
+          deny all;
+          return 403;
+        }
+
+        location ~ /\.git {
+          deny all;
+        }
+
+        # Disallow accessing .htaccess files
+        location ~/\.ht {
+          deny all;
+        }
+
+        location ~* \.(gif|jpe?g|png|css)$ {
+          expires 30d;
+        }
+
+        location ~ \.php$ {
+          include ${config.services.nginx.package}/conf/fastcgi.conf;
+          try_files $uri =404;
+          fastcgi_pass unix:/run/phpfpm/websrv.sock;
+          fastcgi_split_path_info ^(.+\.php)(/.*)$;
+          fastcgi_param PATH_INFO $fastcgi_path_info;
+          fastcgi_index index.php;
+          fastcgi_param PHP_VALUE "
+            upload_max_filesize = 1G
+            max_execution_time = 60
+            max_input_time = 120
+            post_max_size = 1G
+          ";
+        }
+
+        location /app.php {
+          try_files $uri $uri/ /app.php?$query_string;
+        }
+
+        location /install/app.php {
+          try_files $uri $uri/ /install/app.php?$query_string;
+        }
+      '';   
+    };
   };
 }
