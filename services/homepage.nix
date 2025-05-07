@@ -30,19 +30,23 @@
   # directories in `/run`. Else it will fail with (13: Permission denied)
   systemd.services.nginx.serviceConfig.ProtectHome = false;
   
-  services.nginx.virtualHosts = {
+  services.nginx.virtualHosts = let
+    aliases = ["beta.fsim-ev.de" "www.fsim-ev.de" ];
+  in {
 
-    "beta.fsim-ev.de-frontend" = {
+    "fsim-ev.de-frontend" = {
       forceSSL = true;
       enableACME = true;
 
-      serverName = "beta.fsim-ev.de";
+      serverName = "fsim-ev.de";
+      serverAliases = aliases;
 
       locations."/".proxyPass = "http://localhost${config.services.anubis.instances.homepage.settings.BIND}/";
     };
     
-    "beta.fsim-ev.de-unix" = {
-      serverName = "beta.fsim-ev.de";
+    "fsim-ev.de-unix" = {
+      serverName = "fsim-ev.de";
+      serverAliases = aliases;
       listen = [
         {
           addr = "unix:/run/nginx/nginx.sock";
