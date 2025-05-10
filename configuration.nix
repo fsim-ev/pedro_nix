@@ -29,6 +29,12 @@
     options = "--delete-older-than +10";
     dates = "05:00:00"; 
   };
+  boot.binfmt.emulatedSystems =
+    lib.lists.filter (sys: pkgs.stdenv.hostPlatform.system != sys) [
+      "x86_64-linux"
+      "aarch64-linux"
+  ];
+
 
   networking.firewall.enable = true;
   system.stateVersion = "24.05"; # Did you read the comment?
