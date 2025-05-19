@@ -28,5 +28,6 @@
     ./uptime-kuma.nix
     ./renovate.nix
     ./gitlab-runner.nix
+    ./windows-vm-dynamics.nix
   ];
 }
