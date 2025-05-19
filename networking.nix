@@ -5,6 +5,8 @@
     hostId = "e2c06a1b";
     hostName = "pedro";
 
+    useNetworkd = true;
+
     hosts = {
       "10.24.1.2" = [
         "fren.fsim"
