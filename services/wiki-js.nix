@@ -14,8 +14,7 @@
       bindIP = "127.0.0.1";
       port = 8002;
 
-      db.host = "localhost";
-      db.pass = "$(DB_PASS)";
+      db.host = "/run/postgresql";
       db.db = "wiki";
       db.user = "wiki";
 
@@ -30,4 +29,6 @@
 
     locations."/".proxyPass = "http://localhost:${builtins.toString config.services.wiki-js.settings.port}";
   };
+
+  systemd.services.wiki-js.serviceConfig.User = "wiki";
 }
