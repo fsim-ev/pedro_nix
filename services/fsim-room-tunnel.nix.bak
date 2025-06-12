@@ -1,0 +1,71 @@
+{
+  config,
+  ...
+}:{
+  age.secrets = {
+    wireguard-priv-key-proxy-ole.file = ../secrets/wireguard-priv-key-proxy-ole.age;
+  };
+
+  networking.useNetworkd = true;
+  systemd.network = {
+    netdevs = {
+      "50-wg0" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg0";
+          MTUBytes = "1500";
+        };
+        wireguardConfig = {
+          PrivateKeyFile = "/etc/nixos/secrets/secrets/wireguard-tunnel.key";
+          ListenPort = 4422;
+        };
+        wireguardPeers = [
+          {
+            AllowedIPs = [ "10.24.1.2/32" "10.24.0.0/24" ];
+            PublicKey = "ElcCWQwmO1kyLYZOq30DkAwhy8F7Xh7A3jwJLTkUGHY=";
+          }
+          {
+            AllowedIPs = [ "10.24.1.101/32" ];
+            PublicKey = "Lw+fIYm7MQ9vZ21p3qKPsPe67occouBQb4VceQKjATQ=";
+          }
+        ];
+      };
+
+      "51-wg1" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg1";
+          MTUBytes = "1500";
+        };
+        wireguardConfig = {
+          PrivateKeyFile = config.age.secrets.wireguard-priv-key-proxy-ole.path;
+        };
+
+        wireguardPeers = [
+          {
+            PublicKey = "cLPAuu+Pu0nTBenl+ezZyjtVNqP3WYBzKM8BPYQ4Jh8=";
+            Endpoint = "ole.blue:53";
+            PersistentKeepalive = 25;
+            AllowedIPs = [ "10.100.0.0/24" ];
+          }
+        ];
+      };
+    };
+
+    networks.wg0 = {
+      matchConfig.Name = "wg0";
+      address = [ "10.24.1.1/32" ];
+    };
+    networks.wg1 = {
+      matchConfig.Name = "wg1";
+      address = [ "10.100.0.6/32" ];
+      DHCP = "no";
+    networkConfig = {
+      IPv6AcceptRA = false;
+    };
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [ config.systemd.network.netdevs."50-wg0".wireguardConfig.ListenPort ];
+
+}
