@@ -1,0 +1,49 @@
+{
+  ...
+}:{
+  networking = {
+    hostId = "e2c06a1b";
+    hostName = "pedro";
+
+    hosts = {
+      "10.24.1.2" = [
+        "fren.fsim"
+        "monolith.fsim"
+      ];
+    };
+
+    interfaces.eno8303 = {
+      useDHCP = false;
+      ipv4.addresses = [
+        {
+          address = "195.37.211.44";
+          prefixLength = 27;
+        }
+      ];
+    };
+
+    defaultGateway = {
+      address = "195.37.211.33";
+      interface = "eno8303";
+    };
+
+    nameservers = [ 
+      "194.95.106.120"
+      "194.95.106.121"
+    ];
+    nat = {
+      enable = true;
+      externalInterface = "eno8303";
+      # internal interfaces configured in other locations respectively
+    };
+
+    enableIPv6 = false;
+  };
+
+  networking.useDHCP = false;
+
+  boot.kernel.sysctl = {
+    # Allow containers to access internet
+    "net.ipv4.ip_forward" = 1;
+  };
+}
