@@ -10,7 +10,7 @@ port = 5930;
 in
 {
   systemd.services."windows-vm-10" = {
-  enable = true;
+  enable = false;
   after = [ "network.target" ];
   wantedBy = ["multi-user.target"];
   serviceConfig = {

@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     stable-nix = {
-      url = "github:nixos/nixpkgs/nixos-24.11";
+      url = "github:nixos/nixpkgs/nixos-25.05";
     };
 
     agenix = {
