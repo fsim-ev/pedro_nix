@@ -13,7 +13,9 @@
   ];
 in {
   security = {
-    sudo.enable = true;
+    #fix CVE-2025-32463
+    sudo.enable = false;
+    sudo-rs.enable = true;
     doas.enable = true;
   };
 

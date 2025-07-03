@@ -15,7 +15,7 @@
     };
 
     strichliste = {
-      url = "github:DestinyofYeet/nix-strichliste";
+      url = "github:haennes/nix-strichliste";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

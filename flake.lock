@@ -10,11 +10,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1745630506,
-        "narHash": "sha256-bHCFgGeu8XjWlVuaWzi3QONjDW3coZDqSHvnd4l7xus=",
+        "lastModified": 1750173260,
+        "narHash": "sha256-9P1FziAwl5+3edkfFcr5HeGtQUtrSdk/MksX39GieoA=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "96e078c646b711aee04b82ba01aefbff87004ded",
+        "rev": "531beac616433bac6f9e2a19feb8e99a22a66baf",
         "type": "github"
       },
       "original": {
@@ -47,11 +47,11 @@
     },
     "docker-tag-passbolt": {
       "locked": {
-        "lastModified": 1745626021,
-        "narHash": "sha256-Hnycbyw4TVa6hUbz8R7jkOQ8RkRWMCcz+jVUJBin1Vs=",
+        "lastModified": 1749751243,
+        "narHash": "sha256-gvDXIPygT72oXbInBoOMWaczrDKDbrdzK4fcag23RxE=",
         "owner": "fsim-ev",
         "repo": "docker_tag_flake",
-        "rev": "8a65e4399584e63e508cb3b2b77ff572542e0db5",
+        "rev": "50d9631cfa8c7dec0a4bba7ee5eda210b19257ed",
         "type": "github"
       },
       "original": {
@@ -63,11 +63,11 @@
     },
     "docker-tag-zulip": {
       "locked": {
-        "lastModified": 1745628795,
-        "narHash": "sha256-xjQ99rij/uQDwiTgWvDJPDiytljXXxXtSPEgTg9BSr0=",
+        "lastModified": 1747353641,
+        "narHash": "sha256-bciaPZI8q4pA+Ej/CJWq0hOOJUnMs5HO+tYl4CduqqU=",
         "owner": "fsim-ev",
         "repo": "docker_tag_flake",
-        "rev": "b8ecc34edb6830f3125cb03dbd8b0e0f754a4e87",
+        "rev": "ca7b8589cba24300af4e0b72c613baf148e4857e",
         "type": "github"
       },
       "original": {
@@ -164,15 +164,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1751409828,
+        "lastModified": 1751405493,
         "narHash": "sha256-iX2mkdjbyJ17HC8Vto2dB2HxgOB4T3oIU+OJomq//Pw=",
-        "owner": "DestinyofYeet",
+        "owner": "haennes",
         "repo": "nix-strichliste",
-        "rev": "9dbcac036f9b37d8bab643c7b3c4e9f957898ec0",
+        "rev": "4a36b2093be1d73ccf4a07b117942b1b2bc75a10",
         "type": "github"
       },
       "original": {
-        "owner": "DestinyofYeet",
+        "owner": "haennes",
         "repo": "nix-strichliste",
         "type": "github"
       }
