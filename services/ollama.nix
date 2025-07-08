@@ -37,7 +37,7 @@
       OAUTH_ADMIN_ROLES = "admin";
       # OPENID_PROVIDER_URL = "https://cloud.fsim-ev.de/index.php/.well-known/openid-configuration";
       OPENID_PROVIDER_URL = "https://keycloak.fsim-ev.de/realms/default/.well-known/openid-configuration";
-      # OAUTH_MERGE_ACCOUNTS_BY_EMAIL = "True";
+      OAUTH_MERGE_ACCOUNTS_BY_EMAIL = "True";
       ANONYMIZED_TELEMETRY = "False";
       DO_NOT_TRACK = "True";
       SCARF_NO_ANALYTICS = "True";
