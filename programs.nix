@@ -35,6 +35,7 @@ in {
     vim helix neovim
     bat lolcat less
     git
+    ripgrep ripgrep-all
     btop nvtopPackages.full
     ffmpeg
     yazi ranger
