@@ -41,7 +41,12 @@
       serverName = "fsim-ev.de";
       serverAliases = aliases;
 
-      locations."/".proxyPass = "http://localhost${config.services.anubis.instances.homepage.settings.BIND}/";
+      locations = {
+        
+        "/".proxyPass = "http://localhost${config.services.anubis.instances.homepage.settings.BIND}/";
+
+        "/lernmaterial".return = "301 https://cloud.fsim-ev.de";
+      };
     };
     
     "fsim-ev.de-unix" = {
