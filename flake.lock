@@ -45,6 +45,28 @@
         "type": "github"
       }
     },
+    "deploy-rs": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1749105467,
+        "narHash": "sha256-hXh76y/wDl15almBcqvjryB50B0BaiXJKk20f314RoE=",
+        "owner": "serokell",
+        "repo": "deploy-rs",
+        "rev": "6bc76b872374845ba9d645a2f012b764fecd765f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "serokell",
+        "repo": "deploy-rs",
+        "type": "github"
+      }
+    },
     "docker-tag-passbolt": {
       "locked": {
         "lastModified": 1749751243,
@@ -74,6 +96,22 @@
         "owner": "fsim-ev",
         "ref": "zulip/docker-zulip",
         "repo": "docker_tag_flake",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733328505,
+        "narHash": "sha256-NeCCThCEP3eCl2l/+27kNNK7QrwZB1IJCrXfrbv5oqU=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
         "type": "github"
       }
     },
@@ -133,6 +171,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "deploy-rs": "deploy-rs",
         "docker-tag-passbolt": "docker-tag-passbolt",
         "docker-tag-zulip": "docker-tag-zulip",
         "nixpkgs": "nixpkgs",
@@ -192,6 +231,39 @@
         "type": "github"
       }
     },
+    "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "utils": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "website": {
       "inputs": {
         "nixpkgs": [
@@ -200,11 +272,11 @@
         "papermod-theme": "papermod-theme"
       },
       "locked": {
-        "lastModified": 1750710346,
-        "narHash": "sha256-roaWmEoSt/CwhUruoWkKB6K27lf6GbtfT7puNU0lrDk=",
+        "lastModified": 1752765398,
+        "narHash": "sha256-vOnB4qqqSjr5IXegGUjex0nFpw4qQG+wAR6y1JvbpHU=",
         "owner": "fsim-ev",
         "repo": "website",
-        "rev": "364dc6322b4f5757a625b1dc32a4c47912bdd1f0",
+        "rev": "35618bdc9b1cd8299cebb9d3db0729fa9b48b8b3",
         "type": "github"
       },
       "original": {

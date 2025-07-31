@@ -90,11 +90,13 @@
       overwriteprotocol = "https";
       default_phone_region = "DE";
       default_locale = "de";
+      "auth.webauthn.enabled" = false;
   # loglevel = 2;
   # log_type = "syslog";
     };
 
     extraAppsEnable = true;
+    appstoreEnable = true;
 
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps)

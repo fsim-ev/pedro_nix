@@ -156,23 +156,31 @@
       # };
       oauth = {
         sso = {
-          name = "Nextcloud";
+          name = "Keycloak";
           client_id =
-            (builtins.readFile ../secrets/secrets/engelsystem-clientid);
+            # (builtins.readFile ../secrets/secrets/engelsystem-clientid);
+            (builtins.readFile ../secrets/secrets/engelsystem-clientid2);
           client_secret =
-            (builtins.readFile ../secrets/secrets/engelsystem-clientsecret);
-          url_auth = "https://cloud.fsim-ev.de/apps/oauth2/authorize";
-          url_token = "https://cloud.fsim-ev.de/apps/oauth2/api/v1/token";
-          url_info =
-            "https://cloud.fsim-ev.de/ocs/v2.php/cloud/user?format=json";
-          # scope = "openid";
-          id = "ocs.data.id";
-          username = "ocs.data.displayname";
-          email = "ocs.data.email";
-          # first_name = "first-name";
-          # last_name = "last-name";
-          url = "https://cloud.fsim-ev.de/";
-          nested_info = true;
+            # (builtins.readFile ../secrets/secrets/engelsystem-clientsecret);
+            (builtins.readFile ../secrets/secrets/engelsystem-clientsecret2);
+          # url_auth = "https://cloud.fsim-ev.de/apps/oauth2/authorize";
+          url_auth = "https://keycloak.fsim-ev.de/realms/default/protocol/openid-connect/auth";
+          # url_token = "https://cloud.fsim-ev.de/apps/oauth2/api/v1/token";
+          url_token = "https://keycloak.fsim-ev.de/realms/default/protocol/openid-connect/token";
+          # url_info = "https://cloud.fsim-ev.de/ocs/v2.php/cloud/user?format=json";
+          url_info = "https://keycloak.fsim-ev.de/realms/default/protocol/openid-connect/userinfo";
+          scope = [ "openid" "email" "profile" ];
+          # id = "ocs.data.id";
+          # username = "ocs.data.displayname";
+          # email = "ocs.data.email";
+          id = "preferred_username";
+          username = "full_name";
+          email = "email";
+          # first_name = "given_name";
+          # last_name = "family_name";
+          # url = "https://cloud.fsim-ev.de/";
+          # url = "https://keycloak.fsim-ev.de/realms/default/account/";
+          # nested_info = true;
           # hidden = true;
           mark_arrived = true;
           enable_password = false;

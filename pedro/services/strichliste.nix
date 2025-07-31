@@ -190,7 +190,7 @@
       payment.boundary.lower = -5000;
       account.boundary.lower = -2000;
 
-      article.autoOpen = true;
+      article.autoOpen = false;
     };
   };
 

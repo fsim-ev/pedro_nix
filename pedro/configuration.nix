@@ -34,6 +34,19 @@
       "x86_64-linux"
       "aarch64-linux"
   ];
+  #temporary do not push to infra repo
+  # virtualisation.oci-containers.containers = lib.listToAttrs(
+  # lib.genList(i: {name = "reversi-client-${toString (i+1)}";
+  # value={
+  #    image = "reversi-client:latest";
+  #    cmd = ["--server-url" " https://reversi.srwt.de"];
+  #   autoStart = true;
+  # } ;}) 24);
+  # virtualisation.containers.registries.search = [
+  #    "docker.io"
+  #    "quay.io"
+  #    "localhost"
+  # ];
 
 
   networking.firewall.enable = true;

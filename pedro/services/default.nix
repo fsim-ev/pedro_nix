@@ -30,5 +30,6 @@
     ./gitlab-runner.nix
     ./windows-vm-dynamics.nix
     ./keycloak.nix
+    ./inventory.nix
   ];
 }
