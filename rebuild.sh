@@ -40,7 +40,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 read -r ARGS
 fi
 echo "$SERVER -> $ACTION WITH $ARGS"
-read -p "Are you sure? " -n 1 -r
+read -p "Are you sure? y/N" -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   echo

@@ -2,21 +2,30 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./programs.nix
-      ./users.nix
-      ./networking.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./programs.nix
+    ./users.nix
+    ./networking.nix
 
-      ./services
-    ];
+    ./services
+    ./vms
+  ];
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     trusted-users = [ "@wheel" ];
 
     auto-optimise-store = true;
@@ -27,12 +36,11 @@
     persistent = true;
 
     options = "--delete-older-than +10";
-    dates = "05:00:00"; 
+    dates = "05:00:00";
   };
-  boot.binfmt.emulatedSystems =
-    lib.lists.filter (sys: pkgs.stdenv.hostPlatform.system != sys) [
-      "x86_64-linux"
-      "aarch64-linux"
+  boot.binfmt.emulatedSystems = lib.lists.filter (sys: pkgs.stdenv.hostPlatform.system != sys) [
+    "x86_64-linux"
+    "aarch64-linux"
   ];
   #temporary do not push to infra repo
   # virtualisation.oci-containers.containers = lib.listToAttrs(
@@ -48,7 +56,6 @@
   #    "localhost"
   # ];
 
-
   networking.firewall.enable = true;
   system.stateVersion = "24.05"; # Did you read the comment?
 
@@ -61,4 +68,3 @@
     keyMap = "de";
   };
 }
-

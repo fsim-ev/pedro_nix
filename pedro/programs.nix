@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}:let 
+}:
+let
   cudaPkgs = with pkgs.cudaPackages; [
     cudatoolkit
   ];
@@ -11,7 +12,8 @@
     # nil # nix lsp
     nixd # better nix lsp
   ];
-in {
+in
+{
   security = {
     sudo.enable = true;
     # sudo-rs.enable = true;
@@ -31,17 +33,28 @@ in {
 
   };
 
-  environment.systemPackages = with pkgs; [
-    vim helix neovim
-    bat lolcat less
-    git
-    ripgrep ripgrep-all
-    btop nvtopPackages.full
-    ffmpeg
-    yazi ranger
-    nushell
-    inputs.agenix.packages.x86_64-linux.default
-    docker-compose
-    nix-output-monitor
-  ] ++ cudaPkgs ++ helixLSPs;
+  environment.systemPackages =
+    with pkgs;
+    [
+      vim
+      helix
+      neovim
+      bat
+      lolcat
+      less
+      git
+      ripgrep
+      ripgrep-all
+      btop
+      nvtopPackages.full
+      ffmpeg
+      yazi
+      ranger
+      nushell
+      inputs.agenix.packages.x86_64-linux.default
+      docker-compose
+      nix-output-monitor
+    ]
+    ++ cudaPkgs
+    ++ helixLSPs;
 }
