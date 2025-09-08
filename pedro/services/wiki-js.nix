@@ -1,7 +1,8 @@
 {
   config,
   ...
-}:{
+}:
+{
   age.secrets = {
     wiki-js-env-file = {
       file = ../secrets/wiki-js-env-file.age;
@@ -27,7 +28,8 @@
     forceSSL = true;
     enableACME = true;
 
-    locations."/".proxyPass = "http://localhost:${builtins.toString config.services.wiki-js.settings.port}";
+    locations."/".proxyPass =
+      "http://localhost:${builtins.toString config.services.wiki-js.settings.port}";
   };
 
   systemd.services.wiki-js.serviceConfig.User = "wiki";

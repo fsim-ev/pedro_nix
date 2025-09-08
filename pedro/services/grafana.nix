@@ -1,7 +1,8 @@
 {
   config,
   ...
-}:{
+}:
+{
   services.grafana = {
     enable = true;
 
@@ -21,7 +22,11 @@
     enableACME = true;
     forceSSL = true;
 
-    locations."/".proxyPass = let grafana_cfg = config.services.grafana.settings.server;  in "http://${grafana_cfg.http_addr}:${toString grafana_cfg.http_port}";
+    locations."/".proxyPass =
+      let
+        grafana_cfg = config.services.grafana.settings.server;
+      in
+      "http://${grafana_cfg.http_addr}:${toString grafana_cfg.http_port}";
   };
 
 }

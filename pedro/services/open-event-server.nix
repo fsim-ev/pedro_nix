@@ -3,7 +3,8 @@
 }:
 let
   serverStorageDir = "/var/lib/open-event-server/server";
-in {
+in
+{
   virtualisation.oci-containers.containers = rec {
     opev-postgres = {
       image = "postgis/postgis:12-3.0-alpine";

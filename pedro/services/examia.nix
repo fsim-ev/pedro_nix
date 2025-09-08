@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}:{
+}:
+{
   services.phpfpm = {
     phpOptions = ''
       date.timezone = "Europe/Berlin"
@@ -49,16 +50,16 @@
     };
   };
 
-
   services.nginx.virtualHosts = {
     "examia.de-frontend" = {
       serverName = "examia.de";
-      serverAliases = ["www.examia.de"];
+      serverAliases = [ "www.examia.de" ];
 
       forceSSL = true;
       enableACME = true;
 
-      locations."/".proxyPass = "http://localhost${config.services.anubis.instances.examia.settings.BIND}/";
+      locations."/".proxyPass =
+        "http://localhost${config.services.anubis.instances.examia.settings.BIND}/";
     };
 
     "examia.de-backend" = {
@@ -69,7 +70,7 @@
       ];
 
       serverName = "examia.de";
-      serverAliases = ["www.examia.de"];
+      serverAliases = [ "www.examia.de" ];
 
       root = "/var/lib/www/examia.de";
       locations."/".index = "index.php";
@@ -116,7 +117,7 @@
         location /install/app.php {
           try_files $uri $uri/ /install/app.php?$query_string;
         }
-      '';   
+      '';
     };
   };
 }

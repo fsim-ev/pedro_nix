@@ -8,7 +8,7 @@
       file = ../secrets/keycloak-db-pass.age;
     };
   };
-  
+
   services.keycloak = {
     enable = true;
 

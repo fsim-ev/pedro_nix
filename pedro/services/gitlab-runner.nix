@@ -1,7 +1,8 @@
 {
   config,
   ...
-}:{
+}:
+{
   age.secrets = {
     gitlab-runner-token-file = {
       file = ../secrets/gitlab-runner-token.age;

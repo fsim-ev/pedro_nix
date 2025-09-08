@@ -26,7 +26,7 @@
       user = "examia";
       quota = "200G";
     };
-   "infra-zulip" = {
+    "infra-zulip" = {
       authorizedKeysAppendOnly = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxGYg/SMtF/fb79pZQMN0UC3t1R7/HSqXuD0IbKtzYV root@ori"
       ];
@@ -58,27 +58,28 @@
       path = "/mnt/storage/backup/infra/minecraft";
       user = "minecraft";
       quota = "100G";
-    };    
+    };
   };
 
   services.nginx = {
-      enable = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      
-      virtualHosts = {
-        "site.fsim" = {
-          root = "/var/lib/www/grav";
-          locations."/".extraConfig = ''
-            fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            fastcgi_pass unix:${config.services.phpfpm.pools.grav.socket};
-            include ${pkgs.nginx}/conf/fastcgi.conf;
-          '';
-        };
-        "wiki.fsim" = {
-          locations."/".proxyPass = "http://${config.services.wiki-js.settings.bindIP}:${toString config.services.wiki-js.settings.port}";
-        };
+    enable = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+
+    virtualHosts = {
+      "site.fsim" = {
+        root = "/var/lib/www/grav";
+        locations."/".extraConfig = ''
+          fastcgi_split_path_info ^(.+\.php)(/.+)$;
+          fastcgi_pass unix:${config.services.phpfpm.pools.grav.socket};
+          include ${pkgs.nginx}/conf/fastcgi.conf;
+        '';
       };
+      "wiki.fsim" = {
+        locations."/".proxyPass =
+          "http://${config.services.wiki-js.settings.bindIP}:${toString config.services.wiki-js.settings.port}";
+      };
+    };
   };
 
   services.phpfpm = {
@@ -97,40 +98,40 @@
           "listen.mode" = "0600";
           "listen.owner" = config.services.nginx.user;
           "listen.group" = config.services.nginx.group;
-        };        
+        };
       };
     };
   };
-  
+
   services.postgresql = {
-      enable = true;
-      package = pkgs.postgresql_15;
-      
-      ensureDatabases = [
-        config.services.wiki-js.settings.db.db        
-      ];
-      ensureUsers = [
-        {
-          name = config.services.wiki-js.settings.db.db;
-          ensureDBOwnership = true;
-        }
-      ];
-    };
+    enable = true;
+    package = pkgs.postgresql_15;
+
+    ensureDatabases = [
+      config.services.wiki-js.settings.db.db
+    ];
+    ensureUsers = [
+      {
+        name = config.services.wiki-js.settings.db.db;
+        ensureDBOwnership = true;
+      }
+    ];
+  };
 
   services.wiki-js = {
-      enable = false;
-      settings = {
-        bindIP = "127.0.0.1";
-        port = 9001;
-        logLevel = "silly";
-        db.host = "localhost";
-        db.pass = "$(DB_PASS)";
-        db.db = "wiki";
-        db.user = "wiki";
-      };
-      environmentFile = ./secrets/wiki-js;
+    enable = false;
+    settings = {
+      bindIP = "127.0.0.1";
+      port = 9001;
+      logLevel = "silly";
+      db.host = "localhost";
+      db.pass = "$(DB_PASS)";
+      db.db = "wiki";
+      db.user = "wiki";
+    };
+    environmentFile = ./secrets/wiki-js;
   };
-  
+
   services.samba = {
     enable = true;
     settings = {
@@ -140,7 +141,10 @@
         "map to guest" = "bad user";
         "guest account" = "guest";
 
-        "hosts allow" = ["10.24." "127."];
+        "hosts allow" = [
+          "10.24."
+          "127."
+        ];
         "use sendfile" = true;
       };
       webcam = {
@@ -166,9 +170,7 @@
     };
   };
 
-  
-
-  # DANGER ZONE! 
+  # DANGER ZONE!
   #############################################################
 
   # Set your time zone.
@@ -201,14 +203,18 @@
       };
       enp5s0 = {
         #name = "lan";
-        ipv4.addresses = [{
-          address = "10.24.0.1";
-          prefixLength = 24;
-        }];
-        ipv6.addresses = [{
-          address = "f510:1024::1";
-          prefixLength = 64;
-        }];
+        ipv4.addresses = [
+          {
+            address = "10.24.0.1";
+            prefixLength = 24;
+          }
+        ];
+        ipv6.addresses = [
+          {
+            address = "f510:1024::1";
+            prefixLength = 64;
+          }
+        ];
       };
     };
 
@@ -256,16 +262,17 @@
     interfaces."wg0" = {
       privateKeyFile = "/etc/nixos/secrets/wireguard-tunnel.key";
       ips = [ "10.24.1.2/32" ];
-      peers = [{
-        endpoint = "fsim.othr.de:4422";
-        allowedIPs = [ "10.24.1.0/24" ];
-        publicKey = "2gCIu3m6C198/+V3XNAO2rBqOTidLc9UKf+Jy0teNk0=";
-        persistentKeepalive = 10;
-        dynamicEndpointRefreshSeconds = 60;
-      }];
+      peers = [
+        {
+          endpoint = "fsim.othr.de:4422";
+          allowedIPs = [ "10.24.1.0/24" ];
+          publicKey = "2gCIu3m6C198/+V3XNAO2rBqOTidLc9UKf+Jy0teNk0=";
+          persistentKeepalive = 10;
+          dynamicEndpointRefreshSeconds = 60;
+        }
+      ];
     };
   };
-  
 
   services = {
     openssh.enable = true;
@@ -317,7 +324,7 @@
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIS6xrMgqANcI0fvDKoT8eOj5mXejbHgtCsmTV1xjAfL ole@wattson" 
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIS6xrMgqANcI0fvDKoT8eOj5mXejbHgtCsmTV1xjAfL ole@wattson"
       ];
     };
     hannes = {
@@ -339,12 +346,31 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim helix bat
-    htop btop strace zellij
-    ethtool pciutils smartmontools lm_sensors dmidecode
-    lf ncdu fd ripgrep rmlint
-    curl croc rsync nmap iperf
-    git tig lazygit
+    vim
+    helix
+    bat
+    htop
+    btop
+    strace
+    zellij
+    ethtool
+    pciutils
+    smartmontools
+    lm_sensors
+    dmidecode
+    lf
+    ncdu
+    fd
+    ripgrep
+    rmlint
+    curl
+    croc
+    rsync
+    nmap
+    iperf
+    git
+    tig
+    lazygit
     nix-output-monitor
   ];
 
@@ -362,9 +388,11 @@
   # (saves disk space)
   documentation.enable = false;
 
-
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     trusted-users = [ "@wheel" ];
   };
   # This value determines the NixOS release from which the default
@@ -375,4 +403,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 }
-

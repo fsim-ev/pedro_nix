@@ -3,12 +3,13 @@
   lib,
   pkgs,
   ...
-}:{
+}:
+{
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_14;
-    ensureDatabases = [ 
-      config.services.nextcloud.config.dbname 
+    ensureDatabases = [
+      config.services.nextcloud.config.dbname
       config.services.hedgedoc.settings.db.database
       config.services.wiki-js.settings.db.db
     ];
@@ -24,7 +25,7 @@
       {
         name = config.services.wiki-js.settings.db.db;
         ensureDBOwnership = true;
-      }        
+      }
     ];
     settings = {
       log_min_duration_statement = 1000;
@@ -32,7 +33,7 @@
       #log_statement = "mod";
       log_destination = lib.mkForce "syslog";
       #log_connections = true;
-    
+
       # Based on https://www.pgconfig.org/#/?max_connections=256&pg_version=14&environment_name=WEB&total_ram=64&cpus=8&drive_type=HDD&arch=x86-64&os_type=linux
       # Memory
       shared_buffers = "16GB";

@@ -1,7 +1,8 @@
 {
   ...
 }:
-let port = 25565;
+let
+  port = 25565;
 in
 {
   virtualisation.oci-containers.containers.minecraft = {
@@ -38,6 +39,6 @@ in
 
   networking.firewall = {
     allowedUDPPorts = [ port ];
-    allowedTCPPorts = [ port];
+    allowedTCPPorts = [ port ];
   };
 }

@@ -1,23 +1,27 @@
 {
   inputs,
   ...
-} : let
+}:
+let
   domain = "pass.fsim-ev.de";
   port = "8003";
   image_name = inputs.docker-tag-passbolt.image."passbolt/passbolt".name;
   image_tag = inputs.docker-tag-passbolt.image."passbolt/passbolt".tag;
-in {
+in
+{
   virtualisation.oci-containers.containers = {
     passbolt = {
       image = "${image_name}:${image_tag}";
       dependsOn = [ "passbolt-db" ];
 
-      volumes = let 
-        host-storage = "/var/lib/passbolt/passbolt";
-      in [
-        "${host-storage}/gpg:/etc/passbolt/gpg"
-        "${host-storage}/jwt:/etc/passbolt/jwt"
-      ];
+      volumes =
+        let
+          host-storage = "/var/lib/passbolt/passbolt";
+        in
+        [
+          "${host-storage}/gpg:/etc/passbolt/gpg"
+          "${host-storage}/jwt:/etc/passbolt/jwt"
+        ];
 
       environment = {
         DATASOURCES_DEFAULT_PASSWORD = "passbolt";

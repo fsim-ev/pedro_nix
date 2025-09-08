@@ -1,7 +1,8 @@
 {
   config,
   ...
-}:{
+}:
+{
   services.strichliste = {
     enable = true;
 
@@ -26,157 +27,160 @@
         ./strichliste/futterlucke.wav
       ];
 
-      specificSounds = let
-        mioMioMateSounds = [
-          ./strichliste/mate_01.wav
-        ];
-
-        saftSchorleSounds = [
-          ./strichliste/moneyboy_orangensaft.wav
-        ];
-
-        duploSounds = [
-          ./strichliste/duplo_1.wav
-          ./strichliste/duplo_2.wav
-        ];
-
-        belastoSounds = [
-          ./strichliste/emotional-damage.wav
-        ];
-      in {
-        "Wasser" = {
-          sounds = [
-            ./strichliste/wasser_1.wav
+      specificSounds =
+        let
+          mioMioMateSounds = [
+            ./strichliste/mate_01.wav
           ];
-        };
 
-        "Club Mate" = {
-          sounds = [
-            ./strichliste/club_mate_1.wav
-          ] ++ mioMioMateSounds;
-        };
-
-        "Saft Apfel+Cranberry-Heidelbeere" = {
-          sounds = saftSchorleSounds;
-        };
-
-        "Bier" = {
-          sounds = [
-            ./strichliste/bier_1.wav
-            ./strichliste/bier_2.wav
-            ./strichliste/bier_3.wav
-            ./strichliste/bier_4.wav
-            ./strichliste/bier_5.wav
+          saftSchorleSounds = [
+            ./strichliste/moneyboy_orangensaft.wav
           ];
-        };
 
-        "Bueno" = {
-          sounds = [
-            ./strichliste/bueno_1.wav
+          duploSounds = [
+            ./strichliste/duplo_1.wav
+            ./strichliste/duplo_2.wav
           ];
-        };
 
-        "Erdnüsse klein" = {
-          sounds = [
-            ./strichliste/eier.wav
+          belastoSounds = [
+            ./strichliste/emotional-damage.wav
           ];
-        };
+        in
+        {
+          "Wasser" = {
+            sounds = [
+              ./strichliste/wasser_1.wav
+            ];
+          };
 
-        "Belasto (Balisto) orange" = {
-          sounds = belastoSounds;
-        };
+          "Club Mate" = {
+            sounds = [
+              ./strichliste/club_mate_1.wav
+            ]
+            ++ mioMioMateSounds;
+          };
 
-        "Belasto (Balisto) grün" = {
-          sounds = belastoSounds;
-        };
+          "Saft Apfel+Cranberry-Heidelbeere" = {
+            sounds = saftSchorleSounds;
+          };
 
-        "Maoam Bloxx" = {
-          sounds = [
-            ./strichliste/maoam_1.wav
-          ];
-        };
+          "Bier" = {
+            sounds = [
+              ./strichliste/bier_1.wav
+              ./strichliste/bier_2.wav
+              ./strichliste/bier_3.wav
+              ./strichliste/bier_4.wav
+              ./strichliste/bier_5.wav
+            ];
+          };
 
-        "Mentos klein" = {
-          sounds = [
-            ./strichliste/eier.wav
-          ];   
-        };
+          "Bueno" = {
+            sounds = [
+              ./strichliste/bueno_1.wav
+            ];
+          };
 
-        "Spezi" = {
-          sounds = [
-            ./strichliste/spezifische_spezi_fischer.wav
-          ];
-        };
+          "Erdnüsse klein" = {
+            sounds = [
+              ./strichliste/eier.wav
+            ];
+          };
 
-        "Kaffee" = {
-          sounds = [
-            ./strichliste/coffee.wav
-            ./strichliste/coffee_2.wav
-            ./strichliste/coffee_3.wav
-          ];         
-        };
+          "Belasto (Balisto) orange" = {
+            sounds = belastoSounds;
+          };
 
-        "Pizza" = {
-          sounds = [
-            ./strichliste/pizza_1.wav
-          ];
-        };
+          "Belasto (Balisto) grün" = {
+            sounds = belastoSounds;
+          };
 
-        "Snickers classic" = {
-          sounds = [
-            ./strichliste/snickers_1.wav
-          ];
-        };
+          "Maoam Bloxx" = {
+            sounds = [
+              ./strichliste/maoam_1.wav
+            ];
+          };
 
-        "Radler" = {
-          sounds = [
-            ./strichliste/radler.wav
-          ];
-        };
+          "Mentos klein" = {
+            sounds = [
+              ./strichliste/eier.wav
+            ];
+          };
 
-        "Mio Mio Banane" = {
-          sounds = [
-            ./strichliste/minion_banana.wav
-            ./strichliste/mio_mio_banana_2.wav
-          ];
-        };
+          "Spezi" = {
+            sounds = [
+              ./strichliste/spezifische_spezi_fischer.wav
+            ];
+          };
 
-        "Mio Mio Zero" = {
-          sounds = mioMioMateSounds;
-        };
+          "Kaffee" = {
+            sounds = [
+              ./strichliste/coffee.wav
+              ./strichliste/coffee_2.wav
+              ./strichliste/coffee_3.wav
+            ];
+          };
 
-        "Mio Mio Ginger" = {
-          sounds = mioMioMateSounds;
-        };
+          "Pizza" = {
+            sounds = [
+              ./strichliste/pizza_1.wav
+            ];
+          };
 
-        "Mio Mio Mate" = {
-          sounds = mioMioMateSounds;
-        };
+          "Snickers classic" = {
+            sounds = [
+              ./strichliste/snickers_1.wav
+            ];
+          };
 
-        "Mio Mio Cola" = {
-          sounds = mioMioMateSounds;
-        };
+          "Radler" = {
+            sounds = [
+              ./strichliste/radler.wav
+            ];
+          };
 
-        "Saft Apfel+Johannisbeeren" = {
-          sounds = saftSchorleSounds;
-        };
+          "Mio Mio Banane" = {
+            sounds = [
+              ./strichliste/minion_banana.wav
+              ./strichliste/mio_mio_banana_2.wav
+            ];
+          };
 
-        "Apfelschorle" = {
-          sounds = saftSchorleSounds;
-        };
+          "Mio Mio Zero" = {
+            sounds = mioMioMateSounds;
+          };
 
-        "Apfelschorle naturtrüb" = {
-          sounds = saftSchorleSounds;
-        };
+          "Mio Mio Ginger" = {
+            sounds = mioMioMateSounds;
+          };
 
-        "Duplo classic" = {
-          sounds = duploSounds;
-        };
+          "Mio Mio Mate" = {
+            sounds = mioMioMateSounds;
+          };
 
-        "Duplo White" = {
-          sounds = duploSounds;
+          "Mio Mio Cola" = {
+            sounds = mioMioMateSounds;
+          };
+
+          "Saft Apfel+Johannisbeeren" = {
+            sounds = saftSchorleSounds;
+          };
+
+          "Apfelschorle" = {
+            sounds = saftSchorleSounds;
+          };
+
+          "Apfelschorle naturtrüb" = {
+            sounds = saftSchorleSounds;
+          };
+
+          "Duplo classic" = {
+            sounds = duploSounds;
+          };
+
+          "Duplo White" = {
+            sounds = duploSounds;
+          };
         };
-      };
     };
 
     nginxSettings = {
@@ -212,7 +216,6 @@
         deny all;
       '';
     };
-
 
     locations = {
       "@custom403" = {

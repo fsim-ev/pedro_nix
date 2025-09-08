@@ -1,7 +1,8 @@
 {
-config,
+  config,
   ...
-}:{
+}:
+{
   services.monero = {
     enable = true;
 
@@ -10,6 +11,11 @@ config,
     extraConfig = ''
       confirm-external-bind=1
     '';
-  };  
-  networking.firewall.allowedTCPPorts = [ config.services.monero.rpc.port 18080 18081 18082];
+  };
+  networking.firewall.allowedTCPPorts = [
+    config.services.monero.rpc.port
+    18080
+    18081
+    18082
+  ];
 }

@@ -4,10 +4,12 @@
   pkgs,
   inputs,
   ...
-} : let
+}:
+let
   image_name = inputs.docker-tag-zulip.image."zulip/docker-zulip".name;
   image_tag = inputs.docker-tag-zulip.image."zulip/docker-zulip".tag;
-in {
+in
+{
   age.secrets = {
     zulip-env-file = {
       file = ../secrets/zulip-env-file.age;
@@ -24,21 +26,29 @@ in {
     zulip-secrets = {
       file = ../secrets/zulip-secrets.age;
       group = "wheel";
-      mode = "a+r"; #FIXME this shoudl be more granular
+      mode = "a+r"; # FIXME this shoudl be more granular
     };
     zulip-redis = {
       file = ../secrets/zulip-redis.age;
       group = "wheel";
-      mode = "a+r"; #FIXME this shoudl be more granular
+      mode = "a+r"; # FIXME this shoudl be more granular
     };
   };
 
   virtualisation.oci-containers.containers = rec {
     chat = {
       image = "${image_name}:${image_tag}";
-      dependsOn = [ "chat-db" "chat-cache" "chat-mqueue" ];
+      dependsOn = [
+        "chat-db"
+        "chat-cache"
+        "chat-mqueue"
+      ];
       # hack
-      cmd = [ "/bin/sh" "-c" "/home/zulip/deployments/current/scripts/zulip-puppet-apply -f && entrypoint.sh app:run" ];
+      cmd = [
+        "/bin/sh"
+        "-c"
+        "/home/zulip/deployments/current/scripts/zulip-puppet-apply -f && entrypoint.sh app:run"
+      ];
       environmentFiles = [ config.age.secrets.zulip-env-file.path ];
       environment = {
         MANUAL_CONFIGURATION = "true";
@@ -93,7 +103,7 @@ in {
         "/var/lib/zulip/rabbitmq:/var/lib/rabbitmq:rw"
       ];
       extraOptions = [ "--network=container:chat-db" ];
-    }; 
+    };
   };
 
   services.nginx.virtualHosts."chat.fsim-ev.de" = {

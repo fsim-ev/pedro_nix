@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   services.engelsystem = {
     enable = true;
@@ -169,7 +170,11 @@
           url_token = "https://keycloak.fsim-ev.de/realms/default/protocol/openid-connect/token";
           # url_info = "https://cloud.fsim-ev.de/ocs/v2.php/cloud/user?format=json";
           url_info = "https://keycloak.fsim-ev.de/realms/default/protocol/openid-connect/userinfo";
-          scope = [ "openid" "email" "profile" ];
+          scope = [
+            "openid"
+            "email"
+            "profile"
+          ];
           # id = "ocs.data.id";
           # username = "ocs.data.displayname";
           # email = "ocs.data.email";

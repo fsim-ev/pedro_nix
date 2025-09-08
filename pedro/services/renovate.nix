@@ -1,7 +1,8 @@
 {
   config,
   ...
-}:{
+}:
+{
   age.secrets = {
     renovate-token-file = {
       file = ../secrets/renovate-bot-token.age;
@@ -10,7 +11,7 @@
       file = ../secrets/renovate-github-token.age;
     };
   };
-  
+
   services.renovate = {
     enable = true;
     credentials = {
@@ -24,8 +25,14 @@
       platformAutomerge = true;
       ignoreTests = true;
       baseBranches = [ "/.*?/" ];
-      labels = [ "dependency_update" "renovate_bot" ];
-      repositories = [ "IM/Lab_fachschaft/docker_image_flake" "IM/Lab_fachschaft/website-hugo" ];
+      labels = [
+        "dependency_update"
+        "renovate_bot"
+      ];
+      repositories = [
+        "IM/Lab_fachschaft/docker_image_flake"
+        "IM/Lab_fachschaft/website-hugo"
+      ];
       prConcurrentLimit = 0;
       prHourlyLimit = 0;
       # customManagers = [

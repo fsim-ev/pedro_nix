@@ -7,7 +7,7 @@
   services.homebox = {
     enable = true;
     # remove when merged: https://github.com/NixOS/nixpkgs/pull/421105/
-    package = pkgs.callPackage ./homebox/homebox.nix {};
+    package = pkgs.callPackage ./homebox/homebox.nix { };
     database.createLocally = true;
 
     settings = {
@@ -18,15 +18,17 @@
     };
   };
 
-  services.nginx.virtualHosts."inv.fsim-ev.de" = let
-    cfg = config.services.homebox.settings;
-  in {
-    enableACME = true;
-    forceSSL = true;
+  services.nginx.virtualHosts."inv.fsim-ev.de" =
+    let
+      cfg = config.services.homebox.settings;
+    in
+    {
+      enableACME = true;
+      forceSSL = true;
 
-    locations."/" = {
-      proxyPass = "http://${cfg.HBOX_WEB_HOST}:${cfg.HBOX_WEB_PORT}";
-      proxyWebsockets = true;
+      locations."/" = {
+        proxyPass = "http://${cfg.HBOX_WEB_HOST}:${cfg.HBOX_WEB_PORT}";
+        proxyWebsockets = true;
+      };
     };
-  };
 }

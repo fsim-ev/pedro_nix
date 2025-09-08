@@ -2,10 +2,11 @@
   inputs,
   config,
   ...
-}:{
+}:
+{
 
   users.groups.nginx.members = [ "anubis" ];
-  
+
   services.anubis = {
     defaultOptions = {
       user = "anubis";
@@ -29,35 +30,40 @@
   # This is needed for nginx to be able to read other processes
   # directories in `/run`. Else it will fail with (13: Permission denied)
   systemd.services.nginx.serviceConfig.ProtectHome = false;
-  
-  services.nginx.virtualHosts = let
-    aliases = ["beta.fsim-ev.de" "www.fsim-ev.de" ];
-  in {
 
-    "fsim-ev.de-frontend" = {
-      forceSSL = true;
-      enableACME = true;
+  services.nginx.virtualHosts =
+    let
+      aliases = [
+        "beta.fsim-ev.de"
+        "www.fsim-ev.de"
+      ];
+    in
+    {
 
-      serverName = "fsim-ev.de";
-      serverAliases = aliases;
+      "fsim-ev.de-frontend" = {
+        forceSSL = true;
+        enableACME = true;
 
-      locations = {
-        
-        "/".proxyPass = "http://localhost${config.services.anubis.instances.homepage.settings.BIND}/";
+        serverName = "fsim-ev.de";
+        serverAliases = aliases;
 
-        "/lernmaterial".return = "301 https://cloud.fsim-ev.de";
+        locations = {
+
+          "/".proxyPass = "http://localhost${config.services.anubis.instances.homepage.settings.BIND}/";
+
+          "/lernmaterial".return = "301 https://cloud.fsim-ev.de";
+        };
+      };
+
+      "fsim-ev.de-unix" = {
+        serverName = "fsim-ev.de";
+        serverAliases = aliases;
+        listen = [
+          {
+            addr = "unix:/run/nginx/nginx.sock";
+          }
+        ];
+        locations."/".root = inputs.website.packages.x86_64-linux.default;
       };
     };
-    
-    "fsim-ev.de-unix" = {
-      serverName = "fsim-ev.de";
-      serverAliases = aliases;
-      listen = [
-        {
-          addr = "unix:/run/nginx/nginx.sock";
-        }
-      ];
-      locations."/".root = inputs.website.packages.x86_64-linux.default;
-    };
-  };
 }

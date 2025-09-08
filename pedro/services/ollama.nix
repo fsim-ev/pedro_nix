@@ -1,7 +1,9 @@
 {
   config,
+  stable,
   ...
-}:{
+}:
+{
   age.secrets = {
     open-webui-env-file = {
       file = ../secrets/open-webui-env-file.age;
@@ -9,7 +11,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  
+
   services.ollama = {
     enable = true;
     acceleration = "cuda";
@@ -18,6 +20,7 @@
   services.open-webui = {
     enable = true;
     environmentFile = config.age.secrets.open-webui-env-file.path;
+    package = stable.open-webui;
     host = "localhost";
     port = 16753;
     environment = {
@@ -45,7 +48,7 @@
       DO_NOT_TRACK = "True";
       SCARF_NO_ANALYTICS = "True";
       # BYPASS_MODEL_ACCESS_CONTROL = "True";
-    }; 
+    };
 
   };
 
