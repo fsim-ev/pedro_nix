@@ -42,7 +42,7 @@
       email = false;
       allowEmailRegister = false;
       ldap = {
-        url = "ldaps://dc2.hs-regensburg.de";
+        url = "ldaps://adldap.hs-regensburg.de";
         providerName = "NDS Kennung";
         searchBase = "ou=HSR,dc=hs-regensburg,dc=de";
         searchAttributes = [
@@ -62,7 +62,18 @@
     forceSSL = true;
     enableACME = true;
 
-    locations."/".proxyPass =
+    locations."/" = {
+      proxyPass =
       "http://localhost:${builtins.toString config.services.hedgedoc.settings.port}";
+      proxyWebsockets = true;
+    };
+
+    extraConfig = ''
+      proxy_set_header X-Forwarded-Host $http_host;
+      proxy_set_header X-Forwarded-URI $request_uri;
+      proxy_set_header X-Forwarded-Ssl on;
+      proxy_set_header X-Forwarded-For $remote_addr;
+      proxy_set_header X-Real-IP $remote_addr;
+    '';
   };
 }
