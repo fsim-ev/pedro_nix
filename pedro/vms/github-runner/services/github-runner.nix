@@ -3,7 +3,7 @@
   ...
 }:{
     age.secrets = {
-      github-runner-token.file = ../secrets/github-runner.age;
+      github-runner-token.file = ../secrets/github-runner_pat.age;
     };
 
     services.github-runners."strichliste-rs" = {

@@ -33,12 +33,12 @@ in {
         {
           image = "nix-store-overlay.img";
           mountPoint = config.microvm.writableStoreOverlay;
-          size = 16384;
+          size = 20480;
         }
         {
           image = "root.img";
           mountPoint = "/";
-          size = 8192;
+          size = 20480;
         }
       ];
 
