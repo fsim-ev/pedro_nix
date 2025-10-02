@@ -11,4 +11,5 @@ let
 in
 {
   "github-runner.age".publicKeys = authed;
+  "github-runner_pat.age".publicKeys = authed;
 }
