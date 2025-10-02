@@ -192,7 +192,7 @@
 
     settings = {
       payment.boundary.lower = -5000;
-      account.boundary.lower = -2000;
+      account.boundary.lower = 0;
 
       article.autoOpen = false;
     };
