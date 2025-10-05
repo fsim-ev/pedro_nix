@@ -83,5 +83,5 @@
     };
   };
 
-  nix.settings.trusted-users = ["remote-builder"];
+  nix.settings.trusted-users = [ "remote-builder" ];
 }

@@ -1,53 +1,58 @@
 {
   config,
   ...
-}:let
+}:
+let
   # on host: /var/lib/microvms/gh-runner/persistent
   persistent_dir = "/persistent";
-in {
-    imports = [
-      ./services
-      ./packages.nix
+in
+{
+  imports = [
+    ./services
+    ./packages.nix
+  ];
+
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
+
+  system.stateVersion = "25.05";
+
+  microvm = {
+    vcpu = 8;
+    mem = 8192;
+
+    shares = [
+      {
+        proto = "virtiofs";
+        tag = "persistent";
+        source = "persistent";
+        mountPoint = persistent_dir;
+      }
     ];
 
-    nix.settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-    };
+    volumes = [
+      {
+        image = "nix-store-overlay.img";
+        mountPoint = config.microvm.writableStoreOverlay;
+        size = 20480;
+      }
+      {
+        image = "root.img";
+        mountPoint = "/";
+        size = 20480;
+      }
+    ];
 
-    system.stateVersion = "25.05";
+    writableStoreOverlay = "/nix/.rw-store";
+  };
 
-    microvm = {
-      vcpu = 8;
-      mem = 8192;
+  fileSystems."${persistent_dir}".neededForBoot = true;
 
-      shares = [        
-        {
-          proto = "virtiofs";
-          tag = "persistent";
-          source = "persistent";
-          mountPoint = persistent_dir;
-        }
-      ];
-
-      volumes = [
-        {
-          image = "nix-store-overlay.img";
-          mountPoint = config.microvm.writableStoreOverlay;
-          size = 20480;
-        }
-        {
-          image = "root.img";
-          mountPoint = "/";
-          size = 20480;
-        }
-      ];
-
-      writableStoreOverlay = "/nix/.rw-store";
-    };
-
-    fileSystems."${persistent_dir}".neededForBoot = true;
-
-    services.openssh = {
+  services.openssh = {
     hostKeys = [
       {
         path = "${persistent_dir}/hostkey";
@@ -59,6 +64,6 @@ in {
         bits = 4096;
       }
     ];
-    };
-    age.identityPaths = [ "${persistent_dir}/hostkey" ];
-  }
+  };
+  age.identityPaths = [ "${persistent_dir}/hostkey" ];
+}

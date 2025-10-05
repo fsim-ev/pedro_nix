@@ -1,8 +1,9 @@
 {
   pkgs,
   ...
-}:{
-    environment.systemPackages = with pkgs; [
-      btop 
-    ];
-  }
+}:
+{
+  environment.systemPackages = with pkgs; [
+    btop
+  ];
+}

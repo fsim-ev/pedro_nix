@@ -28,43 +28,47 @@
   };
 
   networking.nat.internalInterfaces = [ "microvm-bridge" ];
-  systemd.network = let microvm-name = "microvm-bridge"; in {
+  systemd.network =
+    let
+      microvm-name = "microvm-bridge";
+    in
+    {
 
-    netdevs."10-microvm".netdevConfig = {
-      Kind = "bridge";
-      Name = microvm-name;
-    };
-
-    networks."10-wan" = {
-      matchConfig.Name = "eno8303";
-      address = [
-        "195.37.211.44/27"
-      ];
-      routes = [ { Gateway = "195.37.211.33"; } ];
-      dns = [
-        "194.95.106.120"
-        "194.95.106.121"
-      ];
-
-      linkConfig.RequiredForOnline = "routable";
-    };
-
-    networks = {
-      "30-eno8303" = {
-       matchConfig.Name = "eno8303";
-       networkConfig.Bridge = microvm-name;
-       linkConfig.RequiredForOnline = "enslaved";
-     };
-
-      "10-microvm" = {
-        matchConfig.Name = microvm-name;
-        addresses = [{ Address = "192.168.3.1/24"; }];
+      netdevs."10-microvm".netdevConfig = {
+        Kind = "bridge";
+        Name = microvm-name;
       };
 
-      "11-microvm" = {
-        matchConfig.Name = "vm-*";
-        networkConfig.Bridge = microvm-name;
+      networks."10-wan" = {
+        matchConfig.Name = "eno8303";
+        address = [
+          "195.37.211.44/27"
+        ];
+        routes = [ { Gateway = "195.37.211.33"; } ];
+        dns = [
+          "194.95.106.120"
+          "194.95.106.121"
+        ];
+
+        linkConfig.RequiredForOnline = "routable";
+      };
+
+      networks = {
+        "30-eno8303" = {
+          matchConfig.Name = "eno8303";
+          networkConfig.Bridge = microvm-name;
+          linkConfig.RequiredForOnline = "enslaved";
+        };
+
+        "10-microvm" = {
+          matchConfig.Name = microvm-name;
+          addresses = [ { Address = "192.168.3.1/24"; } ];
+        };
+
+        "11-microvm" = {
+          matchConfig.Name = "vm-*";
+          networkConfig.Bridge = microvm-name;
+        };
       };
     };
-  };
 }

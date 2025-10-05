@@ -1,8 +1,9 @@
 {
   ...
-}:{
-    imports = [
-      ./github-runner.nix
-      ./ssh.nix
-    ];
-  }
+}:
+{
+  imports = [
+    ./github-runner.nix
+    ./ssh.nix
+  ];
+}
