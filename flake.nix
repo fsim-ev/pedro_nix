@@ -96,6 +96,7 @@
           formattingConfig =
             { ... }:
             {
+              projectRootFile = "flake.nix";
               programs.nixfmt.enable = true;
             };
           treeFmtEval = inputs.treefmt-nix.lib.evalModule pkgs formattingConfig;
