@@ -15,7 +15,6 @@ in
 
     inherit domain;
 
-
     dataDir = "/var/lib/paperless";
 
     settings = {

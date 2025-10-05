@@ -37,7 +37,6 @@
     };
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    
 
   };
 
@@ -89,17 +88,21 @@
             };
           };
       };
-      formatter = let
-        system = "x86_64-linux";
-        pkgs = import nixpkgs { inherit system; };
+      formatter =
+        let
+          system = "x86_64-linux";
+          pkgs = import nixpkgs { inherit system; };
 
-      formattingConfig = { ... }: {
-        programs.nixfmt.enable = true;
-      };
-      treeFmtEval = inputs.treefmt-nix.lib.evalModule pkgs formattingConfig;
-      in {
-        
-        "${system}" = treeFmtEval.config.build.wrapper;
-      };
+          formattingConfig =
+            { ... }:
+            {
+              programs.nixfmt.enable = true;
+            };
+          treeFmtEval = inputs.treefmt-nix.lib.evalModule pkgs formattingConfig;
+        in
+        {
+
+          "${system}" = treeFmtEval.config.build.wrapper;
+        };
     };
 }

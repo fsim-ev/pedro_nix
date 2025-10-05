@@ -63,8 +63,7 @@
     enableACME = true;
 
     locations."/" = {
-      proxyPass =
-      "http://localhost:${builtins.toString config.services.hedgedoc.settings.port}";
+      proxyPass = "http://localhost:${builtins.toString config.services.hedgedoc.settings.port}";
       proxyWebsockets = true;
     };
 
