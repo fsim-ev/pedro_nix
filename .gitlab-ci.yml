@@ -1,0 +1,15 @@
+stages:          
+  - fmt
+
+fmt-nix-files:
+  stage: fmt
+  script:
+    - nix fmt
+    - git diff --exit-code > patch.diff
+  artifacts:
+    name: "fmt-diff-${CI_COMMIT_REF_NAME}"
+    when: on_failure
+    paths:
+      - patch.diff
+
+
