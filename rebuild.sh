@@ -16,7 +16,8 @@ call_deploy(){
 }
 SERVERS="\
 pedro
-monolith\
+monolith
+apollo\
 "
 SERVER=$(echo -e "$SERVERS" | fzf)
 if [[ ! "$SERVER" ]]; then
@@ -51,10 +52,10 @@ case "$SERVER" in
   "pedro")
     call_rebuild "pedro" $ACTION  $ARGS
   ;;
-  "monolith")
+  "monolith" | "apollo")
     case "$ACTION" in
       "switch")
-      call_deploy "monolith" $ARGS
+      call_deploy "$SERVER" $ARGS
       ;;
       "build")
       call_rebuild $ACTION $ARGS
