@@ -5,18 +5,18 @@
 { config, pkgs, ... }@inputs:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./services
-      {
-        home-manager.users.autologin = ./homemanager;
-      }
+  imports = [
+    # Include the results of the hardware scan.
+    ./services
+    {
+      home-manager.users.autologin = ./homemanager;
+    }
 
-      ./hardware-configuration.nix
-      ./networking.nix
-      ./users.nix
-      ./programs.nix
-    ];
+    ./hardware-configuration.nix
+    ./networking.nix
+    ./users.nix
+    ./programs.nix
+  ];
 
   time.timeZone = "Europe/Berlin";
 
@@ -34,7 +34,7 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  environment.systemPackages = [ (import ../scripts/get_hyprland_context.nix inputs)];
+  environment.systemPackages = [ (import ../scripts/get_hyprland_context.nix inputs) ];
 
   # Configure keymap in X11
   services.xserver.xkb = {

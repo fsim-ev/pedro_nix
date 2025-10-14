@@ -89,30 +89,33 @@
         confirmationTimeout = 120;
         nodes = {
           monolith =
-          let
-            machine = self.nixosConfigurations.monolith;
-          in
-          {
-            hostname = "10.24.1.2";
-            profiles.system = {
-              user = "root";
-              sshUser = "root";
-              path = inputs.deploy-rs.lib.${machine.pkgs.system}.activate.nixos machine;
+            let
+              machine = self.nixosConfigurations.monolith;
+            in
+            {
+              hostname = "10.24.1.2";
+              profiles.system = {
+                user = "root";
+                sshUser = "root";
+                path = inputs.deploy-rs.lib.${machine.pkgs.system}.activate.nixos machine;
+              };
             };
-          };
-        apollo = 
-          let
-            machine = self.nixosConfigurations.apollo;
-          in
-          {
-            hostname = "apollo"; # this will be resolved at the backup server
-            profiles.system = {
-              user = "root";
-              sshUser = "root";
-              path = inputs.deploy-rs.lib.${machine.pkgs.system}.activate.nixos machine;
-              sshOpts = [ "-J" "10.24.1.2" ];
+          apollo =
+            let
+              machine = self.nixosConfigurations.apollo;
+            in
+            {
+              hostname = "apollo"; # this will be resolved at the backup server
+              profiles.system = {
+                user = "root";
+                sshUser = "root";
+                path = inputs.deploy-rs.lib.${machine.pkgs.system}.activate.nixos machine;
+                sshOpts = [
+                  "-J"
+                  "10.24.1.2"
+                ];
+              };
             };
-          };
         };
       };
       formatter =

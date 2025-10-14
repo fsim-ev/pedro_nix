@@ -1,4 +1,4 @@
-{ pkgs, lib, ...}:
+{ pkgs, lib, ... }:
 let
   jq = lib.getExe pkgs.jq;
 in

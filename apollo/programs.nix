@@ -1,29 +1,30 @@
 {
   pkgs,
   ...
-}:{
-    programs.hyprland = {
+}:
+{
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
+
+  programs.uwsm.enable = true;
+
+  services.displayManager = {
+    autoLogin = {
       enable = true;
-      withUWSM = true;
+      user = "autologin";
     };
 
-    programs.uwsm.enable = true;
+    sddm = {
+      enable = true;
 
-    services.displayManager = {
-      autoLogin = {
-        enable = true;
-        user = "autologin";
-      };
-
-      sddm = {
-        enable = true;
-
-        wayland.enable = true;
-      };
+      wayland.enable = true;
     };
+  };
 
-    environment.systemPackages = with pkgs; [
-      helix
-      vim
-    ];
-  }
+  environment.systemPackages = with pkgs; [
+    helix
+    vim
+  ];
+}

@@ -1,10 +1,11 @@
 {
   ...
-}:{
-    services.openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = true;
-      };
+}:
+{
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
     };
-  }
+  };
+}
