@@ -30,7 +30,6 @@ in
       extraArgs = "--keep 10";
       dates = "daily";
     };
-
   };
 
   environment.systemPackages =
