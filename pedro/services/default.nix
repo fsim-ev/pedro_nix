@@ -23,7 +23,8 @@
     ./paperless-ngx.nix
     ./monero.nix
     # ./prost.nix
-    ./strichliste.nix
+    # ./strichliste.nix
+    ./strichliste-rs.nix
     ./grafana.nix
     ./homepage.nix
     ./uptime-kuma.nix
