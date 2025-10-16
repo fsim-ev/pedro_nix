@@ -43,6 +43,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    strichliste-rs = {
+      url = "github:strichliste-rs/strichliste-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -57,12 +62,13 @@
     in
     {
       nixosConfigurations = {
-        pedro = nixpkgs.lib.nixosSystem {
+        pedro = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           modules = [
             ./pedro/configuration.nix
             inputs.strichliste.nixosModules.strichliste
             inputs.microvm-nix.nixosModules.host
+            inputs.strichliste-rs.nixosModules.${system}.default
           ]
           ++ commonModules;
           inherit specialArgs;
