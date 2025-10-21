@@ -1,7 +1,8 @@
 {
   config,
   ...
-}:{
+}:
+{
   services.strichliste-rs = {
     enable = true;
     address = "127.0.0.1";
@@ -23,115 +24,120 @@
           ./strichliste/windows_error.wav
         ];
 
-        articles = let
-          mioMioMateSounds = [
-            ./strichliste/mate_01.wav
-          ];
+        articles =
+          let
+            mioMioMateSounds = [
+              ./strichliste/mate_01.wav
+            ];
 
-          saftSchorleSounds = [
-            ./strichliste/moneyboy_orangensaft.wav
-          ];
+            saftSchorleSounds = [
+              ./strichliste/moneyboy_orangensaft.wav
+            ];
 
-          belastoSounds = [
-            ./strichliste/emotional-damage.wav
-          ];
+            belastoSounds = [
+              ./strichliste/emotional-damage.wav
+            ];
 
-          duploSounds = [
-            ./strichliste/duplo_1.wav
-            ./strichliste/duplo_2.wav
-          ];
+            duploSounds = [
+              ./strichliste/duplo_1.wav
+              ./strichliste/duplo_2.wav
+            ];
 
-        in {
-          "Wasser" = [
-            ./strichliste/wasser_1.wav
-          ];
+          in
+          {
+            "Wasser" = [
+              ./strichliste/wasser_1.wav
+            ];
 
-          "Club Mate" = [
-            ./strichliste/club_mate_1.wav
-          ] ++ mioMioMateSounds;
+            "Club Mate" = [
+              ./strichliste/club_mate_1.wav
+            ]
+            ++ mioMioMateSounds;
 
-          "Saft Apfel+Cranberry-Heidelbeere" = saftSchorleSounds;
+            "Saft Apfel+Cranberry-Heidelbeere" = saftSchorleSounds;
 
-          "Bueno" = [
+            "Bueno" = [
               ./strichliste/bueno_1.wav
-          ];
+            ];
 
-          "Erdnüsse klein" = [
+            "Erdnüsse klein" = [
               ./strichliste/eier.wav
-          ];
+            ];
 
-          "Belasto (Balisto) orange" = belastoSounds;
+            "Belasto (Balisto) orange" = belastoSounds;
 
-          "Belasto (Balisto) grün" = belastoSounds;
+            "Belasto (Balisto) grün" = belastoSounds;
 
-          "Maoam Bloxx" = [
+            "Maoam Bloxx" = [
               ./strichliste/maoam_1.wav
-          ];
+            ];
 
-          "Mentos klein" = [
+            "Mentos klein" = [
               ./strichliste/eier.wav
-          ];
+            ];
 
-          "Bier" = [
-            ./strichliste/bier_1.wav
-            ./strichliste/bier_2.wav
-            ./strichliste/bier_3.wav
-            ./strichliste/bier_4.wav
-            ./strichliste/bier_5.wav
-          ];
+            "Bier" = [
+              ./strichliste/bier_1.wav
+              ./strichliste/bier_2.wav
+              ./strichliste/bier_3.wav
+              ./strichliste/bier_4.wav
+              ./strichliste/bier_5.wav
+            ];
 
-          "Spezi" = [
-            ./strichliste/spezifische_spezi_fischer.wav
-          ];
+            "Spezi" = [
+              ./strichliste/spezifische_spezi_fischer.wav
+            ];
 
-          "Kaffee" = [            
-            ./strichliste/coffee.wav
-            ./strichliste/coffee_2.wav
-            ./strichliste/coffee_3.wav
-          ];
+            "Kaffee" = [
+              ./strichliste/coffee.wav
+              ./strichliste/coffee_2.wav
+              ./strichliste/coffee_3.wav
+            ];
 
-          "Pizza" = [
-            ./strichliste/pizza_1.wav
-          ];
+            "Pizza" = [
+              ./strichliste/pizza_1.wav
+            ];
 
-          "Snickers classic" = [
-            ./strichliste/snickers_1.wav
-          ];
+            "Snickers classic" = [
+              ./strichliste/snickers_1.wav
+            ];
 
-          "Radler" = [
-            ./strichliste/radler.wav
-          ];
+            "Radler" = [
+              ./strichliste/radler.wav
+            ];
 
-          "Mio Mio Banane" = [
-            ./strichliste/minion_banana.wav
-            ./strichliste/mio_mio_banana_2.wav
-          ];
+            "Mio Mio Banane" = [
+              ./strichliste/minion_banana.wav
+              ./strichliste/mio_mio_banana_2.wav
+            ];
 
-          "Mio Mio Zero" = mioMioMateSounds;
+            "Mio Mio Zero" = mioMioMateSounds;
 
-          "Mio Mio Ginger" = mioMioMateSounds;
+            "Mio Mio Ginger" = mioMioMateSounds;
 
-          "Mio Mio Mate" = mioMioMateSounds;
+            "Mio Mio Mate" = mioMioMateSounds;
 
-          "Mio Mio Cola" = mioMioMateSounds;
+            "Mio Mio Cola" = mioMioMateSounds;
 
-          "Saft Apfel+Johannisbeeren" = saftSchorleSounds;
-          
-          "Apfelschorle" = saftSchorleSounds;
-          
-          "Apfelschorle naturtrüb" = saftSchorleSounds;
+            "Saft Apfel+Johannisbeeren" = saftSchorleSounds;
 
-          "Duplo classic" = duploSounds;
+            "Apfelschorle" = saftSchorleSounds;
 
-          "Duplo White" = duploSounds;
-        };
+            "Apfelschorle naturtrüb" = saftSchorleSounds;
+
+            "Duplo classic" = duploSounds;
+
+            "Duplo White" = duploSounds;
+          };
       };
     };
   };
 
   services.nginx.virtualHosts."strichliste.fsim-ev.de" =
-    let cfg = config.services.strichliste-rs;
-    in {
+    let
+      cfg = config.services.strichliste-rs;
+    in
+    {
       enableACME = true;
       forceSSL = true;
 
@@ -160,6 +166,6 @@
             </html>';
           '';
         };
+      };
     };
-  };
 }
