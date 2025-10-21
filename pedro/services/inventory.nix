@@ -6,8 +6,11 @@
 {
   services.homebox = {
     enable = true;
-    # remove when merged: https://github.com/NixOS/nixpkgs/pull/421105/
-    package = pkgs.callPackage ./homebox/homebox.nix { };
+    package = pkgs.homebox.overrideAttrs {
+      patches = [
+        ./homebox/label_generator.diff
+      ];
+    };
     database.createLocally = true;
 
     settings = {
