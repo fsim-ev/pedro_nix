@@ -42,6 +42,10 @@
               ./strichliste/duplo_1.wav
               ./strichliste/duplo_2.wav
             ];
+            erdnussSounds = [
+              ./strichliste/deeznuts.mp3
+              ./strichliste/eier.wav
+            ];
 
           in
           {
@@ -58,10 +62,6 @@
 
             "Bueno" = [
               ./strichliste/bueno_1.wav
-            ];
-
-            "Erdnüsse klein" = [
-              ./strichliste/eier.wav
             ];
 
             "Belasto (Balisto) orange" = belastoSounds;
@@ -128,6 +128,9 @@
             "Duplo classic" = duploSounds;
 
             "Duplo White" = duploSounds;
+
+            "Erdnüsse groß" = erdnussSounds;
+            "Erdnüsse klein" = erdnussSounds;
           };
       };
     };
