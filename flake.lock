@@ -405,11 +405,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1760905593,
-        "narHash": "sha256-zgRcwC/kTB2ATiQChkzvbcJHZ76zXKA4xBBTxq5E1Bo=",
+        "lastModified": 1761216243,
+        "narHash": "sha256-5CYbgAgD6uYcPZyjQ0igsifV5uOHYVs55A6gxPBnDSQ=",
         "owner": "strichliste-rs",
         "repo": "strichliste-rs",
-        "rev": "a11c03f3bfadf23400a96b93fea77537c5903d72",
+        "rev": "e395a65c2f47c2ddcaeaa04f8ac3c6754b2f575c",
         "type": "github"
       },
       "original": {
@@ -540,11 +540,11 @@
         "papermod-theme": "papermod-theme"
       },
       "locked": {
-        "lastModified": 1759788947,
-        "narHash": "sha256-81Zeex1xy4wD1hGPUMJruAQ942FiQxdX5er8vpEqMxM=",
+        "lastModified": 1761075929,
+        "narHash": "sha256-gb6V18N1Vn270proA97VUD2Ww2nnm+/jCdgMiqP8VBg=",
         "owner": "fsim-ev",
         "repo": "website",
-        "rev": "295d687776d0197b3b0cf477670370b3fbc90444",
+        "rev": "0fae134629e9e5481b71c3960be9918e1e853b31",
         "type": "github"
       },
       "original": {
