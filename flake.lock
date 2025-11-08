@@ -405,11 +405,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1762267775,
-        "narHash": "sha256-70QGn9aVuiDhM3UFNrgm9pFEkxzA6G2uolMU2QFaoZI=",
+        "lastModified": 1762537074,
+        "narHash": "sha256-Ycq1q/dNi6ZCf2DdHIjShBWz3ftrd4Zodpk2atfZdJ8=",
         "owner": "strichliste-rs",
         "repo": "strichliste-rs",
-        "rev": "23630d041b8d3ed64c0f0807e5648ab9a665d158",
+        "rev": "cc26a102dbbd6d98a2f11c2187f947b468aaf57d",
         "type": "github"
       },
       "original": {
