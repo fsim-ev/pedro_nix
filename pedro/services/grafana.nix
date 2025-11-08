@@ -1,10 +1,15 @@
 {
   config,
+  pkgs,
   ...
 }:
 {
   services.grafana = {
     enable = true;
+
+    declarativePlugins = with pkgs.grafanaPlugins; [
+      frser-sqlite-datasource
+    ];
 
     settings = {
       server = {
@@ -17,6 +22,8 @@
       analytics.reporting_enabled = false;
     };
   };
+
+  systemd.services."grafana.service".serviceConfig.ReadOnlyPaths = ["/var/lib/strichliste-rs/"];
 
   services.nginx.virtualHosts."${config.services.grafana.settings.server.domain}" = {
     enableACME = true;
