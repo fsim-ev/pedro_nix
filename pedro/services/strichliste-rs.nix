@@ -48,6 +48,11 @@
               ./strichliste/eier.wav
             ];
 
+            punschSounds = [
+              ./strichliste/christmas_sound.wav
+              ./strichliste/christmas_sound2.wav
+            ];
+
           in
           {
             "Wasser" = [
@@ -132,6 +137,9 @@
 
             "Erdnüsse groß" = erdnussSounds;
             "Erdnüsse klein" = erdnussSounds;
+
+            "Glühwein" = punschSounds;
+            "Kinderpunsch" = punschSounds;
           };
       };
     };
