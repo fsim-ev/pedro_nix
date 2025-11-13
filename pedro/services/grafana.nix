@@ -23,7 +23,9 @@
     };
   };
 
-  systemd.services."grafana.service".serviceConfig.ReadOnlyPaths = ["/var/lib/strichliste-rs/"];
+  systemd.services."grafana.service".serviceConfig.ReadWritePaths = [
+    "/var/lib/strichliste-rs/database.db"
+  ];
 
   services.nginx.virtualHosts."${config.services.grafana.settings.server.domain}" = {
     enableACME = true;

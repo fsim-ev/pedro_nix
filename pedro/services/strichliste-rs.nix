@@ -184,9 +184,11 @@
   systemd.services."strichliste-rs".serviceConfig.DynamicUser = lib.mkForce false;
   systemd.services."strichliste-rs".serviceConfig.Group = lib.mkForce "strichliste-rs";
 
-
   users.groups."strichliste-rs" = {
-    members = ["strichliste" "grafana"];
+    members = [
+      "strichliste"
+      "grafana"
+    ];
   };
 
   users.users."strichliste-rs" = {
