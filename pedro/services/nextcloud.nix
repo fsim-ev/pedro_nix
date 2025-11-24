@@ -104,7 +104,7 @@
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps)
 
-        richdocuments
+        # richdocuments
         ; # collabora office
     };
 
