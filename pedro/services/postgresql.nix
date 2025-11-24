@@ -28,10 +28,12 @@
       }
     ];
     settings = {
+
       log_min_duration_statement = 1000;
       log_min_messages = "LOG";
       #log_statement = "mod";
       log_destination = lib.mkForce "syslog";
+      max_connections = 1024;
       #log_connections = true;
 
       # Based on https://www.pgconfig.org/#/?max_connections=256&pg_version=14&environment_name=WEB&total_ram=64&cpus=8&drive_type=HDD&arch=x86-64&os_type=linux
