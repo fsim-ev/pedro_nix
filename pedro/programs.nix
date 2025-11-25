@@ -12,6 +12,20 @@ let
     # nil # nix lsp
     nixd # better nix lsp
   ];
+
+  godap = pkgs.buildGoModule rec {
+    name = "godap";
+    version = "2.10.7";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "Macmod";
+      repo = "godap";
+      tag = "v${version}";
+      hash = "sha256-ThN280XriiNXADPvZMwJMAFbAd7rqW8hNs1Fcs1yIAM=";
+    };
+
+    vendorHash = "sha256-D5Eq2JFIEmxO/FBGON+nKtGktWPOzXfv8l5akRTpz7Q=";
+  };
 in
 {
   security = {
@@ -53,6 +67,8 @@ in
       inputs.agenix.packages.x86_64-linux.default
       docker-compose
       nix-output-monitor
+
+      godap
     ]
     ++ cudaPkgs
     ++ helixLSPs;

@@ -181,18 +181,15 @@
       };
     };
 
-  systemd.services."strichliste-rs".serviceConfig.DynamicUser = lib.mkForce false;
-  systemd.services."strichliste-rs".serviceConfig.Group = lib.mkForce "strichliste-rs";
-
-  users.groups."strichliste-rs" = {
-    members = [
-      "strichliste"
-      "grafana"
-    ];
+  systemd.services."strichliste-rs-exporter" = {
+    script = ''
+      cp /var/lib/private/strichliste-rs/database.db /var/lib/grafana/
+      chown grafana:grafana /var/lib/grafana/database.db
+    '';
   };
 
-  users.users."strichliste-rs" = {
-    isSystemUser = true;
-    group = "strichliste-rs";
+  systemd.timers."strichliste-rs-exporter" = {
+    wantedBy = ["multi-user.target"];
+    timerConfig.OnCalendar = "minutely";
   };
 }

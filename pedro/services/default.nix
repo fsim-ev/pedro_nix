@@ -8,7 +8,7 @@
     ./sshd.nix
     ./nextcloud.nix
     ./postgresql.nix
-    ./netdata.nix
+    # ./netdata.nix
     ./examia.nix
     ./hedgedoc.nix
     ./zulip.nix
@@ -33,5 +33,6 @@
     ./windows-vm-dynamics.nix
     ./keycloak.nix
     ./inventory.nix
+    ./authentik.nix
   ];
 }

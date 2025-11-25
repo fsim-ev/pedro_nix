@@ -48,6 +48,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    authentik-nix.url = "github:nix-community/authentik-nix";
+
   };
 
   outputs =
@@ -69,6 +71,7 @@
             inputs.strichliste.nixosModules.strichliste
             inputs.microvm-nix.nixosModules.host
             inputs.strichliste-rs.nixosModules.${system}.default
+            inputs.authentik-nix.nixosModules.default
           ]
           ++ commonModules;
           inherit specialArgs;

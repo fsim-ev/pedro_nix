@@ -53,9 +53,18 @@
         searchFilter = "(cn={{username}})";
         userNameField = "displayName";
         useridField = "cn";
-        tlsca = "";
       };
     };
+  };
+
+
+  systemd.services."hedgedoc".serviceConfig.ReadOnlyPaths = ["/etc/nixos/certs/oth_ldap.pem"];
+  systemd.services."hedgedoc".environment = rec {
+    # CMD_LDAP_TLS_CA="/etc/nixos/certs/oth_ldap.pem";
+    # SSL_CERT_FILE = ../../certs/oth_ldap.pem;
+    # NODE_EXTRA_CA_CERTS = SSL_CERT_FILE;
+    NODE_OPTIONS="--use-openssl-ca";
+
   };
 
   services.nginx.virtualHosts."pad.fsim-ev.de" = {

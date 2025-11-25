@@ -7,8 +7,11 @@ let
 
   laq33610 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJiYDGbWQnyaL0+U1BmLKGn7yqRtdaQOAjXSBkejDycH laq33610@pedro";
 
+  system_toast = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAOAGS7JYMzJRAap5d4+43NO+i69BXFDWK4yF+tc+CTp root@toast";
+
   authed = [
     system
+    system_toast
     root
     beo45216
     laq33610
@@ -40,4 +43,7 @@ in
   "gitlab-runner-token.age".publicKeys = authed;
 
   "keycloak-db-pass.age".publicKeys = authed;
+
+  "authentik-env.age".publicKeys = authed;
+  "authentik-ldap-env.age".publicKeys = authed;
 }

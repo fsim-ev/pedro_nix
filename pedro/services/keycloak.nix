@@ -43,4 +43,7 @@
       enableACME = true;
     };
   };
+
+  # should be able to remove them at some point
+  systemd.services."keycloak".environment = { "KC_TRUSTSTORE_PATHS" = "/etc/nixos/certs"; };
 }
