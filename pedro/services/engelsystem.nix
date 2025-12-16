@@ -162,8 +162,12 @@
       oauth = {
         sso = {
           name = "Authentik";
-          client_id = {_secret = config.age.secrets.engelsystem-sso-client-id.path; };
-          client_secret = {_secret = config.age.secrets.engelsystem-sso-client-secret.path; };
+          client_id = {
+            _secret = config.age.secrets.engelsystem-sso-client-id.path;
+          };
+          client_secret = {
+            _secret = config.age.secrets.engelsystem-sso-client-secret.path;
+          };
           url_auth = "https://idp.fsim-ev.de/application/o/authorize/";
           url_token = "https://idp.fsim-ev.de/application/o/token/";
           url_info = "https://idp.fsim-ev.de/application/o/userinfo/";

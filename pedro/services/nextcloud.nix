@@ -81,7 +81,7 @@
       patches = [
         ../patches/nextcloud-remove-notify-nag.patch
         ../patches/nextcloud-login-form-message.patch
-      ];        
+      ];
     };
 
     hostName = "cloud.fsim-ev.de";
