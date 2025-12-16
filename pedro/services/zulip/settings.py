@@ -213,7 +213,7 @@ AUTH_LDAP_REVERSE_EMAIL_SEARCH = LDAPSearch("ou=HSR,dc=hs-regensburg,dc=de",
                                             ldap.SCOPE_SUBTREE, "(mail=%(email)s)")
 
 ## AUTH_LDAP_USERNAME_ATTR should be the Zulip username attribute
-## (defined in AUTH_LDAP_USER_SEARCH).
+# (defined in AUTH_LDAP_USER_SEARCH).
 AUTH_LDAP_USERNAME_ATTR = 'cn'
 
 ## This map defines how to populate attributes of a Zulip user from LDAP.

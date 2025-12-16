@@ -78,7 +78,10 @@
   services.nextcloud = {
     enable = true;
     package = stable.nextcloud31.overrideAttrs {
-      patches = (../patches/nextcloud-remove-notify-nag.patch);
+      patches = [
+        ../patches/nextcloud-remove-notify-nag.patch
+        ../patches/nextcloud-login-form-message.patch
+      ];        
     };
 
     hostName = "cloud.fsim-ev.de";
@@ -96,6 +99,7 @@
       "auth.webauthn.enabled" = false;
       loglevel = 2;
       log_type = "file";
+      hide_login_form = true;
     };
 
     extraAppsEnable = true;

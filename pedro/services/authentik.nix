@@ -21,4 +21,6 @@
       enable = true;
       environmentFile = config.age.secrets.authentik-ldap-env.path;
     };
+
+    networking.firewall.allowedTCPPorts = [ 6636 ];
   }

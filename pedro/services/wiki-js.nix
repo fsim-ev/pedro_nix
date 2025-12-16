@@ -18,8 +18,6 @@
       db.host = "/run/postgresql";
       db.db = "wiki";
       db.user = "wiki";
-
-      #logLevel = "silly";
     };
     environmentFile = config.age.secrets.wiki-js-env-file.path;
   };

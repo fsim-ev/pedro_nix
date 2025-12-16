@@ -46,4 +46,10 @@ in
 
   "authentik-env.age".publicKeys = authed;
   "authentik-ldap-env.age".publicKeys = authed;
+
+  "engelsystem-sso-client-id.age".publicKeys = authed;
+  "engelsystem-sso-client-secret.age".publicKeys = authed;
+
+  "grafana-sso-client-id.age".publicKeys = authed;
+  "grafana-sso-client-secret.age".publicKeys = authed;
 }

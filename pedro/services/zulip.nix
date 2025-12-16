@@ -63,7 +63,7 @@ in
         "/var/lib/zulip:/data"
         "/var/log/zulip:/var/log/zulip"
         "${./zulip/zulip.conf}:/etc/zulip/zulip.conf"
-        "${./zulip/settings.py}:/etc/zulip/settings.py"
+        "${./zulip/new_settings.py}:/etc/zulip/settings.py"
         "${config.age.secrets.zulip-secrets.path}:/etc/zulip/zulip-secrets.conf"
       ];
       extraOptions = [ "--network=container:chat-db" ];

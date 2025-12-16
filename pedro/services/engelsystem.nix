@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
+  age.secrets = {
+    engelsystem-sso-client-id.file = ../secrets/engelsystem-sso-client-id.age;
+    engelsystem-sso-client-secret.file = ../secrets/engelsystem-sso-client-secret.age;
+  };
 
   services.engelsystem = {
     enable = true;
@@ -157,19 +161,12 @@
       # };
       oauth = {
         sso = {
-          name = "Keycloak";
-          client_id =
-            # (builtins.readFile ../secrets/secrets/engelsystem-clientid);
-            (builtins.readFile ../secrets/secrets/engelsystem-clientid2);
-          client_secret =
-            # (builtins.readFile ../secrets/secrets/engelsystem-clientsecret);
-            (builtins.readFile ../secrets/secrets/engelsystem-clientsecret2);
-          # url_auth = "https://cloud.fsim-ev.de/apps/oauth2/authorize";
-          url_auth = "https://keycloak.fsim-ev.de/realms/default/protocol/openid-connect/auth";
-          # url_token = "https://cloud.fsim-ev.de/apps/oauth2/api/v1/token";
-          url_token = "https://keycloak.fsim-ev.de/realms/default/protocol/openid-connect/token";
-          # url_info = "https://cloud.fsim-ev.de/ocs/v2.php/cloud/user?format=json";
-          url_info = "https://keycloak.fsim-ev.de/realms/default/protocol/openid-connect/userinfo";
+          name = "Authentik";
+          client_id = {_secret = config.age.secrets.engelsystem-sso-client-id.path; };
+          client_secret = {_secret = config.age.secrets.engelsystem-sso-client-secret.path; };
+          url_auth = "https://idp.fsim-ev.de/application/o/authorize/";
+          url_token = "https://idp.fsim-ev.de/application/o/token/";
+          url_info = "https://idp.fsim-ev.de/application/o/userinfo/";
           scope = [
             "openid"
             "email"
@@ -178,8 +175,8 @@
           # id = "ocs.data.id";
           # username = "ocs.data.displayname";
           # email = "ocs.data.email";
-          id = "preferred_username";
-          username = "full_name";
+          id = "nickname"; # rz-kennung
+          username = "name";
           email = "email";
           # first_name = "given_name";
           # last_name = "family_name";
