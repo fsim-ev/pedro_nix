@@ -7,7 +7,7 @@
   #   ../certs/ca_1.pem
   #   ../certs/ca_2.pem
   # ];
-
+  
   networking = {
     hostId = "e2c06a1b";
     hostName = "pedro";

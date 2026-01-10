@@ -189,7 +189,7 @@
   };
 
   systemd.timers."strichliste-rs-exporter" = {
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
     timerConfig.OnCalendar = "minutely";
   };
 }

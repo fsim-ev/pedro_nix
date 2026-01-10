@@ -40,40 +40,41 @@
       allowGravatar = false;
 
       email = false;
-      #   allowEmailRegister = false;
-      #   ldap = {
-      #     url = "ldaps://adldap.hs-regensburg.de";
-      #     providerName = "NDS Kennung";
-      #     searchBase = "ou=HSR,dc=hs-regensburg,dc=de";
-      #     searchAttributes = [
-      #       "displayName"
-      #       "mail"
-      #       "cn"
-      #     ];
-      #     searchFilter = "(cn={{username}})";
-      #     userNameField = "displayName";
-      #     useridField = "cn";
-      #   };
-      # };
+    #   allowEmailRegister = false;
+    #   ldap = {
+    #     url = "ldaps://adldap.hs-regensburg.de";
+    #     providerName = "NDS Kennung";
+    #     searchBase = "ou=HSR,dc=hs-regensburg,dc=de";
+    #     searchAttributes = [
+    #       "displayName"
+    #       "mail"
+    #       "cn"
+    #     ];
+    #     searchFilter = "(cn={{username}})";
+    #     userNameField = "displayName";
+    #     useridField = "cn";
+    #   };
+    # };
       oauth2 = {
         authorizationURL = "https://idp.fsim-ev.de/application/o/authorize/";
         tokenURL = "https://idp.fsim-ev.de/application/o/token/";
         userProfileURL = "https://idp.fsim-ev.de/application/o/userinfo/";
         userProfileUsernameAttr = "nickname";
         userProfileDisplayNameAttr = "name";
-        userProfileEmailAttr = "email";
+        userProfileEmailAttr  = "email";
         scope = "openid email profile";
         providerName = "Authentik";
       };
     };
   };
 
-  systemd.services."hedgedoc".serviceConfig.ReadOnlyPaths = [ "/etc/nixos/certs/oth_ldap.pem" ];
+
+  systemd.services."hedgedoc".serviceConfig.ReadOnlyPaths = ["/etc/nixos/certs/oth_ldap.pem"];
   systemd.services."hedgedoc".environment = rec {
     # CMD_LDAP_TLS_CA="/etc/nixos/certs/oth_ldap.pem";
     # SSL_CERT_FILE = ../../certs/oth_ldap.pem;
     # NODE_EXTRA_CA_CERTS = SSL_CERT_FILE;
-    NODE_OPTIONS = "--use-openssl-ca";
+    NODE_OPTIONS="--use-openssl-ca";
 
   };
 

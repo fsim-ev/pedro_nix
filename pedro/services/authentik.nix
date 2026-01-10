@@ -1,27 +1,26 @@
 {
   config,
   ...
-}:
-{
-  age.secrets = {
-    authentik-env.file = ../secrets/authentik-env.age;
-    authentik-ldap-env.file = ../secrets/authentik-ldap-env.age;
-  };
-
-  services.authentik = {
-    enable = true;
-    environmentFile = config.age.secrets.authentik-env.path;
-    nginx = {
-      enable = true;
-      host = "idp.fsim-ev.de";
-      enableACME = true;
+}:{
+    age.secrets = {
+      authentik-env.file = ../secrets/authentik-env.age;
+      authentik-ldap-env.file = ../secrets/authentik-ldap-env.age;
     };
-  };
 
-  services.authentik-ldap = {
-    enable = true;
-    environmentFile = config.age.secrets.authentik-ldap-env.path;
-  };
+    services.authentik = {
+      enable = true;
+      environmentFile = config.age.secrets.authentik-env.path;
+      nginx = {
+        enable = true;
+        host = "idp.fsim-ev.de";
+        enableACME = true;
+      };
+    };
 
-  networking.firewall.allowedTCPPorts = [ 6636 ];
-}
+    services.authentik-ldap = {
+      enable = true;
+      environmentFile = config.age.secrets.authentik-ldap-env.path;
+    };
+
+    networking.firewall.allowedTCPPorts = [ 6636 ];
+  }
