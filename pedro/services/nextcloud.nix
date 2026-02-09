@@ -66,6 +66,18 @@
         Type = "oneshot";
       };
     };
+  systemd.services.nextcloud-config-oicd =
+    let
+      inherit (config.services.nextcloud) occ;
+    in
+    {
+      wantedBy = [ "multi-user.target" ];
+      after = [ "nextcloud-setup.service" ];
+      script =''
+        ${occ}/bin/nextcloud-occ config:app:set --type=string --value=0 user_oidc allow_multiple_user_backends
+      '';
+      serviceConfig.Type = "oneshot";
+    };
 
   networking.hosts = {
     "127.0.0.1" = [
@@ -77,10 +89,10 @@
 
   services.nextcloud = {
     enable = true;
-    package = stable.nextcloud31.overrideAttrs {
+    package = stable.nextcloud32.overrideAttrs {
       patches = [
         ../patches/nextcloud-remove-notify-nag.patch
-        ../patches/nextcloud-login-form-message.patch
+        # ../patches/nextcloud-login-form-message.patch
       ];        
     };
 
