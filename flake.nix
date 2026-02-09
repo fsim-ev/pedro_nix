@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs";
 
     stable-nix = {
-      url = "github:nixos/nixpkgs/nixos-25.05";
+      url = "github:nixos/nixpkgs/nixos-25.11";
     };
 
     agenix = {
@@ -14,14 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    strichliste = {
-      url = "github:haennes/nix-strichliste";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     website = {
       url = "github:fsim-ev/website";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     docker-tag-zulip.url = "github:fsim-ev/docker_tag_flake/zulip/docker-zulip";
@@ -45,7 +39,6 @@
 
     strichliste-rs = {
       url = "github:strichliste-rs/strichliste-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     authentik-nix.url = "github:nix-community/authentik-nix";
@@ -68,7 +61,6 @@
           system = "x86_64-linux";
           modules = [
             ./pedro/configuration.nix
-            inputs.strichliste.nixosModules.strichliste
             inputs.microvm-nix.nixosModules.host
             inputs.strichliste-rs.nixosModules.${system}.default
             inputs.authentik-nix.nixosModules.default

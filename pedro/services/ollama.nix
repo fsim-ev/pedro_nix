@@ -14,7 +14,7 @@
 
   services.ollama = {
     enable = true;
-    acceleration = "cuda";
+    package = stable.ollama-cuda;
   };
 
   services.open-webui = {
