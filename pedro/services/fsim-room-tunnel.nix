@@ -38,7 +38,7 @@
         peers = [
           {
             publicKey = "cLPAuu+Pu0nTBenl+ezZyjtVNqP3WYBzKM8BPYQ4Jh8=";
-            endpoint = "ole.blue:53";
+            endpoint = "ole.blue:1337";
             persistentKeepalive = 25;
             allowedIPs = [ "10.100.0.0/24" ];
           }
