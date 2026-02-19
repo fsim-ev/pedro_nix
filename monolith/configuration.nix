@@ -7,130 +7,14 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./services
   ];
 
   boot = {
     tmp.useTmpfs = true;
   };
 
-  powerManagement.cpuFreqGovernor = "ondemand";
   hardware.enableRedistributableFirmware = true;
-
-  # Backup service
-  services.borgbackup.repos = {
-    "infra-examia" = {
-      authorizedKeysAppendOnly = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxGYg/SMtF/fb79pZQMN0UC3t1R7/HSqXuD0IbKtzYV root@ori"
-      ];
-      path = "/mnt/storage/backup/infra/examia";
-      user = "examia";
-      quota = "200G";
-    };
-    "infra-zulip" = {
-      authorizedKeysAppendOnly = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxGYg/SMtF/fb79pZQMN0UC3t1R7/HSqXuD0IbKtzYV root@ori"
-      ];
-      path = "/mnt/storage/backup/infra/zulip";
-      user = "zulip";
-      quota = "100G";
-    };
-    "infra-nextcloud" = {
-      authorizedKeysAppendOnly = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxGYg/SMtF/fb79pZQMN0UC3t1R7/HSqXuD0IbKtzYV root@ori"
-      ];
-      path = "/mnt/storage/backup/infra/nextcloud";
-      user = "nextcloud";
-      quota = "1024G";
-    };
-    "infra-hedgedoc" = {
-      authorizedKeysAppendOnly = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxGYg/SMtF/fb79pZQMN0UC3t1R7/HSqXuD0IbKtzYV root@ori"
-      ];
-      path = "/mnt/storage/backup/infra/hedgedoc";
-      user = "hedgedoc";
-      quota = "10G";
-    };
-
-    "game-minecraft" = {
-      authorizedKeysAppendOnly = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxGYg/SMtF/fb79pZQMN0UC3t1R7/HSqXuD0IbKtzYV root@ori"
-      ];
-      path = "/mnt/storage/backup/infra/minecraft";
-      user = "minecraft";
-      quota = "100G";
-    };
-  };
-
-  services.nginx = {
-    enable = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-
-    virtualHosts = {
-      "site.fsim" = {
-        root = "/var/lib/www/grav";
-        locations."/".extraConfig = ''
-          fastcgi_split_path_info ^(.+\.php)(/.+)$;
-          fastcgi_pass unix:${config.services.phpfpm.pools.grav.socket};
-          include ${pkgs.nginx}/conf/fastcgi.conf;
-        '';
-      };
-      "wiki.fsim" = {
-        locations."/".proxyPass =
-          "http://${config.services.wiki-js.settings.bindIP}:${toString config.services.wiki-js.settings.port}";
-      };
-    };
-  };
-
-  services.phpfpm = {
-    phpOptions = ''
-      date.timeZone = "Europe/Berlin";
-    '';
-    pools = {
-      grav = {
-        user = config.services.nginx.user;
-        group = config.services.nginx.group;
-        settings = {
-          "pm" = "ondemand";
-          "pm.max_children" = 10;
-          "pm.max_requests" = 500;
-          # dump hacks
-          "listen.mode" = "0600";
-          "listen.owner" = config.services.nginx.user;
-          "listen.group" = config.services.nginx.group;
-        };
-      };
-    };
-  };
-
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_15;
-
-    ensureDatabases = [
-      config.services.wiki-js.settings.db.db
-    ];
-    ensureUsers = [
-      {
-        name = config.services.wiki-js.settings.db.db;
-        ensureDBOwnership = true;
-      }
-    ];
-  };
-
-  services.wiki-js = {
-    enable = false;
-    settings = {
-      bindIP = "127.0.0.1";
-      port = 9001;
-      logLevel = "silly";
-      db.host = "localhost";
-      db.pass = "$(DB_PASS)";
-      db.db = "wiki";
-      db.user = "wiki";
-    };
-    environmentFile = ./secrets/wiki-js;
-  };
 
   services.samba = {
     enable = true;
@@ -181,6 +65,10 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = "de";
+  };
+
+  age.secrets = {
+    wireguard-key-file.file = ./secrets/wireguard-tunnel.age;
   };
 
   networking = {
@@ -260,7 +148,7 @@
   networking.wireguard = {
     enable = true;
     interfaces."wg0" = {
-      privateKeyFile = "/etc/nixos/secrets/wireguard-tunnel.key";
+      privateKeyFile = config.age.secrets.wireguard-key-file.path;
       ips = [ "10.24.1.2/32" ];
       peers = [
         {
