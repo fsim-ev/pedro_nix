@@ -90,6 +90,10 @@
     device = "storage/services/strichliste-rs";
     fsType = "zfs";
   };
+  fileSystems."/var/lib/opnform" = {
+    device = "storage/services/opnform";
+    fsType = "zfs";
+  };
 
   services.zfs = {
     autoScrub.enable = true;

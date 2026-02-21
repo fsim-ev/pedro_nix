@@ -34,5 +34,6 @@
     ./keycloak.nix
     ./inventory.nix
     ./authentik.nix
+    ./opnform.nix
   ];
 }

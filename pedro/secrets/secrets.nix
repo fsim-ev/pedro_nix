@@ -52,4 +52,8 @@ in
 
   "grafana-sso-client-id.age".publicKeys = authed;
   "grafana-sso-client-secret.age".publicKeys = authed;
+
+  "opnform-pg-env.age".publicKeys = authed;
+  "opnform-api-env.age".publicKeys = authed;
+  "opnform-client-env.age".publicKeys = authed;
 }
