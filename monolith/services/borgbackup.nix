@@ -1,4 +1,5 @@
-{...}:{
+{ ... }:
+{
   # Backup service
   services.borgbackup.repos = {
     "infra-examia" = {

@@ -27,7 +27,11 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "snd-sof-pci" "snd-sof-intel-hda-common" "snd_hda_intel" ];
+  boot.kernelModules = [
+    "snd-sof-pci"
+    "snd-sof-intel-hda-common"
+    "snd_hda_intel"
+  ];
   boot.extraModprobeConfig = ''
     options snd_hda_intel index=0
   '';

@@ -57,7 +57,6 @@
       OPENID_REDIRECT_URI = "https://ai.fsim-ev.de/oauth/oidc/callback";
       ENABLE_LOGIN_FORM = "False";
       OAUTH_GROUP_CLAIM = "groups";
-      
 
       DEFAULT_USER_ROLE = "user";
       ENABLE_ADMIN_CHAT_ACCESS = "False";

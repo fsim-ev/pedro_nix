@@ -84,7 +84,8 @@
           modules = [
             inputs.home-manager.nixosModules.home-manager
             ./apollo/configuration.nix
-          ] ++ commonModules;
+          ]
+          ++ commonModules;
           inherit specialArgs;
         };
       };
