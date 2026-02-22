@@ -43,7 +43,7 @@
 
     authentik-nix.url = "github:nix-community/authentik-nix";
 
-    infoscreen-ng.url = "github:haennes/infoscreen-ng-mirror-tmp";
+    infoscreen-ng.url = "github:fsim-ev/infoscreen-ng";
 
   };
 
