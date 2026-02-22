@@ -347,14 +347,14 @@
       "locked": {
         "lastModified": 1771789522,
         "narHash": "sha256-C4L26D6745Ys9wrDBtZAa1mlyBQhQ227E4RcvMRwaW8=",
-        "owner": "haennes",
-        "repo": "infoscreen-ng-mirror-tmp",
+        "owner": "fsim-ev",
+        "repo": "infoscreen-ng",
         "rev": "f79a0553dd7505e16eebd1ca57814c7bd32a2af1",
         "type": "github"
       },
       "original": {
-        "owner": "haennes",
-        "repo": "infoscreen-ng-mirror-tmp",
+        "owner": "fsim-ev",
+        "repo": "infoscreen-ng",
         "type": "github"
       }
     },
