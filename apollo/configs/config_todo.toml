@@ -1,0 +1,24 @@
+show_completed_tasks = 720 # min
+
+[[calendar]]
+name = "Events"
+url = "https://cloud.fsim-ev.de/remote.php/dav/public-calendars/aHnwEMi7TcG9xatM/?export"
+
+#[[calendar]]
+#name = "Feiertage"
+#url = "https://www.feiertage-deutschland.de/kalender-download/ics/feiertage-deutschland.ics"
+
+[[calendar]]
+name = "AK-Infra"
+url = "https://cloud.fsim-ev.de/remote.php/dav/calendars/fsim-dev/ak-infra_shared_by_fsim/?export"
+auth = { username = "fsim-dev", password = "FachschaftIM" }
+
+[[calendar]]
+name = "AK-Einkauf"
+url = "https://cloud.fsim-ev.de/remote.php/dav/calendars/fsim-dev/ak-einkauf_shared_by_fsim/?export"
+auth = { username = "fsim-dev", password = "FachschaftIM" }
+
+[[calendar]]
+name = "Projekte"
+url = "https://cloud.fsim-ev.de/remote.php/dav/calendars/fsim-dev/projekte_shared_by_fsim/?export"
+auth = { username = "fsim-dev", password = "FachschaftIM" }

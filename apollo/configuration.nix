@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }@inputs:
+{ config, pkgs, inputs, ... }@all_inputs:
 
 {
   imports = [
@@ -10,6 +10,7 @@
     ./services
     {
       home-manager.users.autologin = ./homemanager;
+      home-manager.extraSpecialArgs = { inherit inputs; };
     }
 
     ./hardware-configuration.nix
@@ -34,12 +35,27 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  environment.systemPackages = [ (import ../scripts/get_hyprland_context.nix inputs) ];
+  environment.systemPackages = with pkgs; [
+    (import ../scripts/get_hyprland_context.nix all_inputs) btop
+    alsa-utils
+    alsa-plugins
+    sof-firmware
+    libinput
+    usbutils
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "de";
     variant = "nodeadkeys";
+  };
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true; # if not already enabled
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
 
   console.keyMap = "de-latin1-nodeadkeys";

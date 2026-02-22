@@ -1,0 +1,33 @@
+#newsfeed_url= "https://www.oth-regensburg.de/fakultaeten/informatik-und-mathematik/schwarzes-brett/rss.xml"
+
+[time_off]
+start = "18:00"
+end = "3:00"
+
+[untis]
+school = "OTH-Regensburg"
+auth = { username= "FSIM", password= "FachschaftIM" }
+faculty = "IM"
+day_range = 3
+
+[course_colors]
+default = 0xFF_666666
+[course_colors.map]
+"IM"        = 0xFF_BF3F2E
+"^IN?[0-9]" = 0xFF_3D7EBF
+"IT"        = 0xFF_308D38
+"IW"        = 0xFF_997922
+"^MA[0-9]"  = 0xFF_6E8699
+"MIN"       = 0xFF_1B3C8F
+"MMA"       = 0xFF_37434D
+"KI"        = 0xFF_792EB3
+
+[location_colors]
+default = 0xFF_666666
+[location_colors.map]
+"KF"   = 0xFF_4A78D3
+"K0"   = 0xFF_4A78D3
+"K1"   = 0xFF_365599
+"K2"   = 0xFF_345494
+"virt" = 0xFF_B56713
+
