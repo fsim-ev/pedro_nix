@@ -23,7 +23,7 @@
     enable = true;
     url = "https://code.ole.blue";
     name = "pedro";
-    labels = ["native:host"];
+    labels = [ "native:host" ];
     tokenFile = config.age.secrets.forgejo-token.path;
     hostPackages = with pkgs; [
       nix

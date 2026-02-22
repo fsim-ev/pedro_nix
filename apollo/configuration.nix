@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }@all_inputs:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}@all_inputs:
 
 {
   imports = [
@@ -36,7 +41,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    (import ../scripts/get_hyprland_context.nix all_inputs) btop
+    (import ../scripts/get_hyprland_context.nix all_inputs)
+    btop
     alsa-utils
     alsa-plugins
     sof-firmware

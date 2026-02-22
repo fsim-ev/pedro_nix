@@ -1,4 +1,5 @@
-{ config, stable, ... }:{
+{ config, stable, ... }:
+{
   services.home-assistant = {
     enable = true;
 
@@ -23,7 +24,7 @@
         server_port = 8123;
 
         use_x_forwarded_for = true;
-        trusted_proxies = ["127.0.0.1"];
+        trusted_proxies = [ "127.0.0.1" ];
       };
 
       homeassistant = {
@@ -52,18 +53,19 @@
     };
   };
 
-
   services.nginx.virtualHosts."room.fsim-ev.de" = {
     forceSSL = true;
     useACMEHost = "room.fsim-ev.de";
 
-    locations."/" = let
+    locations."/" =
+      let
         haConfig = config.services.home-assistant.config.http;
-      in {
+      in
+      {
         proxyPass = "http://${haConfig.server_host}:${toString haConfig.server_port}";
 
         proxyWebsockets = true;
         recommendedProxySettings = true;
-    };
+      };
   };
 }

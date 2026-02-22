@@ -1,4 +1,5 @@
-{config, ...}:{
+{ config, ... }:
+{
 
   age.secrets = {
     hetzner-api-token.file = ../secrets/hetzner-dns-api-token.age;

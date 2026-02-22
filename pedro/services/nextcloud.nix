@@ -73,7 +73,7 @@
     {
       wantedBy = [ "multi-user.target" ];
       after = [ "nextcloud-setup.service" ];
-      script =''
+      script = ''
         ${occ}/bin/nextcloud-occ config:app:set --type=string --value=0 user_oidc allow_multiple_user_backends
       '';
       serviceConfig.Type = "oneshot";
@@ -93,7 +93,7 @@
       patches = [
         ../patches/nextcloud-remove-notify-nag.patch
         # ../patches/nextcloud-login-form-message.patch
-      ];        
+      ];
     };
 
     hostName = "cloud.fsim-ev.de";
