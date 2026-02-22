@@ -43,6 +43,8 @@
 
     authentik-nix.url = "github:nix-community/authentik-nix";
 
+    infoscreen-ng.url = "github:haennes/infoscreen-ng-mirror-tmp";
+
   };
 
   outputs =
@@ -82,7 +84,8 @@
           modules = [
             inputs.home-manager.nixosModules.home-manager
             ./apollo/configuration.nix
-          ];
+          ] ++ commonModules;
+          inherit specialArgs;
         };
       };
       deploy = {
