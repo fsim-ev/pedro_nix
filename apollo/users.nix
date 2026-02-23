@@ -14,6 +14,16 @@
       ];
       packages = with pkgs; [ ];
     };
+
+    beo45216 = {
+      isNormalUser = true;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
+      initialPassword = "changeme";
+    };
+
     autologin = {
       isNormalUser = true;
     };
