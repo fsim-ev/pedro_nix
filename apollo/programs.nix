@@ -10,6 +10,16 @@
 
   programs.uwsm.enable = true;
 
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep 10";
+      dates = "daily";
+    };
+  };
+
+
   services.displayManager = {
     autoLogin = {
       enable = true;
