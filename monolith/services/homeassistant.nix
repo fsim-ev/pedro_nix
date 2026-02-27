@@ -6,6 +6,7 @@
     extraComponents = [
       "history"
       "mqtt"
+      "rest_command"
 
       # Components required to complete the onboarding
       "analytics"
@@ -50,6 +51,12 @@
       usb = { };
       webhook = { };
       zeroconf = { };
+
+      rest_command = {
+        shutdown_apollo = {
+          url = "http://apollo:7854/shutdown";
+        };
+      };
     };
   };
 
