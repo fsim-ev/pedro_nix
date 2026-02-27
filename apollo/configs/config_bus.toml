@@ -15,7 +15,7 @@ color = 0xFF_4A78D3
 [bus_stops."TechCampus/OTH".stops_into_city]
 # Corrects lines which deviate from API indicators
 # <bus line> = { final_stops = [<stops into city>] }
-"5" = ["Schwabelweis Heyden", "Weichs-DEZ", "Regensburg Hbf", "Hbf"]
+"5" = ["Schwabelweis Heyden", "Weichs-DEZ", "Regensburg Hbf", "Hbf", "Hauptbahnhof"]
 "19" = ["Regensburg Hbf"]
 "20" = ["Regensburg Hbf"]
 "21" = ["Regensburg Hbf"]
