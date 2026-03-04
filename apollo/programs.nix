@@ -19,7 +19,6 @@
     };
   };
 
-
   services.displayManager = {
     autoLogin = {
       enable = true;

@@ -25,7 +25,7 @@ in
       PAPERLESS_AUTO_CREATE = true;
       PAPERLESS_SOCIAL_AUTO_SIGNUP = true;
       PAPERLESS_SOCIALACCOUNT_ALLOW_SIGNUPS = true;
-      PAPERLESS_APPS="allauth.socialaccount.providers.openid_connect";
+      PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
       PAPERLESS_SOCIAL_ACCOUNT_SYNC_GROUPS = true;
     };
 
