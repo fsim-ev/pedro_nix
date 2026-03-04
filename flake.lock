@@ -345,11 +345,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1771789522,
-        "narHash": "sha256-C4L26D6745Ys9wrDBtZAa1mlyBQhQ227E4RcvMRwaW8=",
+        "lastModified": 1772622264,
+        "narHash": "sha256-3IQOSAJdvsUHXqg4a1dd1Jy63c/gHg2GAzbQ8fzRaY0=",
         "owner": "fsim-ev",
         "repo": "infoscreen-ng",
-        "rev": "f79a0553dd7505e16eebd1ca57814c7bd32a2af1",
+        "rev": "b03fb2a9bdfa3e403335a19f41e345c33de1b7f0",
         "type": "github"
       },
       "original": {

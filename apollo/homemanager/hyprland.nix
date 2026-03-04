@@ -2,6 +2,7 @@
   lib,
   pkgs,
   inputs,
+  config,
   ...
 }:
 let
@@ -11,6 +12,11 @@ let
   infoscreen-bus-schedule = lib.getExe ipkgs.infoscreen-bus-schedule;
 in
 {
+  age.secrets = {
+    timetable-toml.file = ./secrets/stundenplan-toml.age;
+    todo-toml.file = ./secrets/todo-toml.age;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -21,8 +27,8 @@ in
       exec-once = lib.filter (a: a != "") (
         lib.splitString "\n" ''
           [workspace 1 silent; fullscreen 2 1] sleep 10s && ${infoscreen-bus-schedule} -C ${../configs/config_bus.toml}
-          [workspace 2 silent; fullscreen 2 0] sleep 10s && ${infoscreen-timetable} -C ${../configs/config_timetable.toml}
-          [workspace 3 silent; fullscreen 2 2] sleep 10s && ${infoscreen-todo-list} -C ${../configs/config_todo.toml}
+          [workspace 2 silent; fullscreen 2 0] sleep 10s && ${infoscreen-timetable} -C ${config.age.secrets.timetable-toml.path}
+          [workspace 3 silent; fullscreen 2 2] sleep 10s && ${infoscreen-todo-list} -C ${config.age.secrets.todo-toml.path}
           [workspace 4 silent; fullscreen 2 2] sleep 10s && ${pkgs.firefox}/bin/firefox --kiosk --new-window strichliste.fsim-ev.de
         ''
       );
