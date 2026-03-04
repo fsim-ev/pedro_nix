@@ -59,7 +59,6 @@ in
             ./github-runner
           ];
         };
-        inherit pkgs;
       })
     ];
   };

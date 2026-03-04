@@ -4,18 +4,24 @@
   ...
 }:
 {
-  age.secrets = {
+  age.secrets = let
+    ownership = {
+      owner = "grafana";
+      group = "grafana";
+    };
+  in {
     grafana-sso-client-id = {
       file = ../secrets/grafana-sso-client-id.age;
-      owner = "grafana";
-      group = "grafana";
-    };
+    } // ownership;
     grafana-sso-client-secret = {
       file = ../secrets/grafana-sso-client-secret.age;
-      owner = "grafana";
-      group = "grafana";
-    };
+    } // ownership;
+
+    grafana-secret-key = {
+      file = ../secrets/grafana-secret-key.age;
+    } // ownership;
   };
+
   services.grafana = {
     enable = true;
 
@@ -30,6 +36,10 @@
 
         domain = "stats.fsim-ev.de";
         root_url = "https://stats.fsim-ev.de";
+      };
+
+      security = {
+        secret_key = "$__file{${config.age.secrets.grafana-secret-key.path}}";
       };
 
       analytics.reporting_enabled = false;

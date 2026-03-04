@@ -1,12 +1,13 @@
 {
   config,
   pkgs,
+  stable,
   ...
 }:
 {
   services.homebox = {
     enable = true;
-    package = pkgs.homebox.overrideAttrs {
+    package = stable.homebox.overrideAttrs {
       patches = [
         ./homebox/label_generator.diff
       ];

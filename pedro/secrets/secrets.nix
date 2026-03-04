@@ -3,18 +3,12 @@ let
 
   root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHCZSVF6GnRarMgJ5yCv7fBDPQCnqvBJutyJF4KSDNz4 root@pedro";
 
-  beo45216 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKnBjkICd0zMKGsZNSXbe7quhU5CbL/ReT0pooY+pPcJ beo45216@pedro";
-
-  laq33610 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJiYDGbWQnyaL0+U1BmLKGn7yqRtdaQOAjXSBkejDycH laq33610@pedro";
-
   system_toast = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAOAGS7JYMzJRAap5d4+43NO+i69BXFDWK4yF+tc+CTp root@toast";
 
   authed = [
     system
     system_toast
     root
-    beo45216
-    laq33610
   ];
 in
 {
@@ -57,4 +51,8 @@ in
   "opnform-pg-env.age".publicKeys = authed;
   "opnform-api-env.age".publicKeys = authed;
   "opnform-client-env.age".publicKeys = authed;
+
+  "grafana-secret-key.age".publicKeys = authed;
+
+  "vaultwarden-env.age".publicKeys = authed;
 }
