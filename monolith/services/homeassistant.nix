@@ -7,6 +7,7 @@
       "history"
       "mqtt"
       "rest_command"
+      "ping"
 
       # Components required to complete the onboarding
       "analytics"
