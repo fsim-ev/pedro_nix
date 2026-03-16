@@ -45,6 +45,8 @@
 
     infoscreen-ng.url = "github:fsim-ev/infoscreen-ng";
 
+    opnform-nextcloud.url = "git+https://git.hannses.de/borbitter/opnform-nc-proxy.git";
+
   };
 
   outputs =

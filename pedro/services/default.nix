@@ -34,6 +34,7 @@
     ./inventory.nix
     ./authentik.nix
     ./opnform.nix
+    ./opnform-nextcloud.nix
     ./vaultwarden.nix
   ];
 }

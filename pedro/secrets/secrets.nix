@@ -52,6 +52,8 @@ in
   "opnform-api-env.age".publicKeys = authed;
   "opnform-client-env.age".publicKeys = authed;
 
+  "opnform-nextcloud-config.age".publicKeys = authed;
+
   "grafana-secret-key.age".publicKeys = authed;
 
   "vaultwarden-env.age".publicKeys = authed;
