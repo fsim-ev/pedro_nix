@@ -964,11 +964,11 @@
         "papermod-theme": "papermod-theme"
       },
       "locked": {
-        "lastModified": 1773326650,
-        "narHash": "sha256-GxuD8yAZJVVhDrn1Cs7YC1NWga2DjB5SD8o/fi8xm1k=",
+        "lastModified": 1773779983,
+        "narHash": "sha256-KyAMM6zVHC0uhvfncNORbC2OMkyeFOBqn4s3e6e0LHU=",
         "owner": "fsim-ev",
         "repo": "website",
-        "rev": "25315fad6ff18f4fb805dbb564e571c5508a8a1f",
+        "rev": "8cc8e15d54169b610616a24586d4523f14c4111c",
         "type": "github"
       },
       "original": {
