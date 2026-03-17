@@ -6,7 +6,7 @@
   age.secrets = {
     vaultwarden-env.file = ../secrets/vaultwarden-env.age;
   };
-  
+
   services.vaultwarden = {
     enable = true;
     dbBackend = "postgresql";
