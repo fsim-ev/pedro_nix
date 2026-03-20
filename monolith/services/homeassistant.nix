@@ -57,6 +57,10 @@
         shutdown_apollo = {
           url = "http://apollo:7854/shutdown";
         };
+
+        reboot_apollo = {
+          url = "http://apollo:7854/reboot";
+        };
       };
     };
   };

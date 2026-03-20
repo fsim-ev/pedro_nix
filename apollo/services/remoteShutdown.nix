@@ -10,7 +10,7 @@ in
 {
   systemd.services."remote-shutdown" = {
     script = ''
-      ${lib.getExe pkgs.shell2http} -shell ${lib.getExe' pkgs.bash "bash"} -host "${host}" -port ${toString port} /shutdown "shutdown now"
+      ${lib.getExe pkgs.shell2http} -shell ${lib.getExe' pkgs.bash "bash"} -host "${host}" -port ${toString port} /shutdown "shutdown now" /reboot "reboot"
     '';
 
     wantedBy = [ "multi-user.target" ];

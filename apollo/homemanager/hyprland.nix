@@ -26,32 +26,32 @@ in
       };
       exec-once = lib.filter (a: a != "") (
         lib.splitString "\n" ''
-          [workspace 1 silent; fullscreen 2 1] sleep 10s && ${infoscreen-bus-schedule} -C ${../configs/config_bus.toml}
-          [workspace 2 silent; fullscreen 2 0] sleep 10s && ${infoscreen-timetable} -C ${config.age.secrets.timetable-toml.path}
-          [workspace 3 silent; fullscreen 2 2] sleep 10s && ${infoscreen-todo-list} -C ${config.age.secrets.todo-toml.path}
-          [workspace 4 silent; fullscreen 2 2] sleep 10s && ${pkgs.firefox}/bin/firefox --kiosk --new-window strichliste.fsim-ev.de
+          [workspace 1 silent; fullscreen 2 1] sleep 10 && ${infoscreen-bus-schedule} -C ${../configs/config_bus.toml}
+          [workspace 2 silent; fullscreen 2 0] sleep 10 && ${infoscreen-timetable} -C ${config.age.secrets.timetable-toml.path}
+          [workspace 3 silent; fullscreen 2 2] sleep 10 && ${infoscreen-todo-list} -C ${config.age.secrets.todo-toml.path}
+          [workspace 4 silent; fullscreen 2 2] sleep 10 && ${pkgs.firefox}/bin/firefox --kiosk --new-window strichliste.fsim-ev.de
         ''
       );
       # instead waiting for network-online.target hangs up the touch diisplay
 
       workspace = [
-        "1, monitor:DP-4" # left
+        "4, monitor:DP-4" # Strichliste
         "2, monitor:DP-3" # middle
         "3, monitor:DP-2" # right
-        "4, monitor:DP-1" # Strichliste
+        "1, monitor:DP-1" # left
         "r[1-4], gapsin:0, gapsout:0"
       ];
       monitor = [
-        "DP-1,preferred, auto, 1, transform, 1"
-        "DP-4 ,preferred, auto, 1, transform, 1"
-        "DP-2,preferred, auto, 1, transform, 1"
-        "DP-3,preferred, auto, 1, transform, 1"
+        "DP-1, preferred, auto, 1, transform, 1"
+        "DP-4, preferred, auto, 1, transform, 1"
+        "DP-2, preferred, auto, 1, transform, 1"
+        "DP-3, preferred, auto, 1, transform, 1"
       ];
       input = {
         touchdevice = [
           {
             transform = 1;
-            output = "DP-1";
+            output = "DP-4";
           }
         ];
       };
