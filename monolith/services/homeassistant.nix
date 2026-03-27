@@ -1,5 +1,20 @@
 { config, stable, ... }:
+let
+  haUser = config.systemd.services."home-assistant".serviceConfig.User;
+  haGroup = config.systemd.services."home-assistant".serviceConfig.Group;
+
+  haOwnership = {
+    owner = haUser;
+    group = haGroup;
+  };
+  in 
 {
+  age.secrets = {
+    zulip_webhook = {
+      file = ../secrets/homeassistant-zulip-webhook.age;
+    } // haOwnership;
+  };
+
   services.home-assistant = {
     enable = true;
 
@@ -8,6 +23,7 @@
       "mqtt"
       "rest_command"
       "ping"
+      "notify"
 
       # Components required to complete the onboarding
       "analytics"
@@ -52,6 +68,12 @@
       usb = { };
       webhook = { };
       zeroconf = { };
+
+      notify = [{
+        platform = "rest";
+        resource = "!include ${config.age.secrets.zulip_webhook.path}";
+        method = "POST_JSON";
+      }];
 
       rest_command = {
         shutdown_apollo = {
