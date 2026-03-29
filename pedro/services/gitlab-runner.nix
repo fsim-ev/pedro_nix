@@ -4,8 +4,11 @@
 }:
 {
   age.secrets = {
-    gitlab-runner-token-file = {
-      file = ../secrets/gitlab-runner-token.age;
+    gitlab-runner-token-file-website = {
+      file = ../secrets/gitlab-runner-token-website.age;
+    };
+    gitlab-runner-token-file-erstiguide = {
+      file = ../secrets/gitlab-runner-token-erstiguide.age;
     };
   };
 
@@ -16,7 +19,11 @@
       website = {
         # dockerImage = "nixos/nix";
         executor = "shell";
-        authenticationTokenConfigFile = config.age.secrets.gitlab-runner-token-file.path;
+        authenticationTokenConfigFile = config.age.secrets.gitlab-runner-token-file-website.path;
+      };
+      Erstiguide = {
+        executor = "shell";
+        authenticationTokenConfigFile = config.age.secrets.gitlab-runner-token-file-erstiguide.path;
       };
     };
   };

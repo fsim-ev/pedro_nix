@@ -35,7 +35,8 @@ in
 
   "renovate-bot-token.age".publicKeys = authed;
   "renovate-github-token.age".publicKeys = authed;
-  "gitlab-runner-token.age".publicKeys = authed;
+  "gitlab-runner-token-website.age".publicKeys = authed;
+  "gitlab-runner-token-erstiguide.age".publicKeys = authed;
 
   "keycloak-db-pass.age".publicKeys = authed;
 
