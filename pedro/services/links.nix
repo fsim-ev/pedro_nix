@@ -12,6 +12,8 @@ in
     forceSSL = true;
     locations = mkMerge [
       (create_redirect "bouldern" "https://chat.fsim-ev.de/#narrow/channel/9-Events/topic/Boulder-Monday/with/43194")
+      (create_redirect "" "https://fsim-ev.de")
+
     ];
   
   };
