@@ -2,7 +2,7 @@
 let
   inherit (lib) mkMerge;
   create_redirect = source: target: {
-      ${source}.return = "301 ${target}";
+      "/${source}".return = "301 ${target}";
   };
 in
 {
