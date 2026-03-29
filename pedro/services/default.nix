@@ -36,5 +36,6 @@
     ./opnform.nix
     ./opnform-nextcloud.nix
     ./vaultwarden.nix
+    ./links.nix
   ];
 }
