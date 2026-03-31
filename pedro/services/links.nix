@@ -1,13 +1,13 @@
-{lib, ...}:
+{ lib, ... }:
 let
   inherit (lib) mkMerge;
   create_redirect = source: target: {
-      "/${source}".return = "301 ${target}";
+    "/${source}".return = "301 ${target}";
   };
 in
 {
   security.acme.certs."l.fsim-ev.de".inheritDefaults = true;
-  services.nginx.virtualHosts."l.fsim-ev.de"  = {
+  services.nginx.virtualHosts."l.fsim-ev.de" = {
     enableACME = true;
     forceSSL = true;
     locations = mkMerge [
@@ -15,6 +15,6 @@ in
       (create_redirect "" "https://fsim-ev.de")
 
     ];
-  
+
   };
 }

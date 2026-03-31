@@ -7,12 +7,13 @@ let
     owner = haUser;
     group = haGroup;
   };
-  in 
+in
 {
   age.secrets = {
     zulip_webhook = {
       file = ../secrets/homeassistant-zulip-webhook.age;
-    } // haOwnership;
+    }
+    // haOwnership;
   };
 
   services.home-assistant = {
@@ -69,11 +70,13 @@ let
       webhook = { };
       zeroconf = { };
 
-      notify = [{
-        platform = "rest";
-        resource = "!include ${config.age.secrets.zulip_webhook.path}";
-        method = "POST_JSON";
-      }];
+      notify = [
+        {
+          platform = "rest";
+          resource = "!include ${config.age.secrets.zulip_webhook.path}";
+          method = "POST_JSON";
+        }
+      ];
 
       rest_command = {
         shutdown_apollo = {
