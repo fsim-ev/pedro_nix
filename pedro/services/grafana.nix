@@ -4,28 +4,23 @@
   ...
 }:
 {
-  age.secrets =
-    let
-      ownership = {
-        owner = "grafana";
-        group = "grafana";
-      };
-    in
-    {
-      grafana-sso-client-id = {
-        file = ../secrets/grafana-sso-client-id.age;
-      }
-      // ownership;
-      grafana-sso-client-secret = {
-        file = ../secrets/grafana-sso-client-secret.age;
-      }
-      // ownership;
-
-      grafana-secret-key = {
-        file = ../secrets/grafana-secret-key.age;
-      }
-      // ownership;
+  age.secrets = let
+    ownership = {
+      owner = "grafana";
+      group = "grafana";
     };
+  in {
+    grafana-sso-client-id = {
+      file = ../secrets/grafana-sso-client-id.age;
+    } // ownership;
+    grafana-sso-client-secret = {
+      file = ../secrets/grafana-sso-client-secret.age;
+    } // ownership;
+
+    grafana-secret-key = {
+      file = ../secrets/grafana-secret-key.age;
+    } // ownership;
+  };
 
   services.grafana = {
     enable = true;
